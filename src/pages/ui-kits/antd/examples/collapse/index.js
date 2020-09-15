@@ -5,7 +5,7 @@ import { Collapse } from 'antd'
 const { Panel } = Collapse
 
 function callback(key) {
-  console.log(key)
+    console.log(key)
 }
 
 const text = `
@@ -15,44 +15,44 @@ const text = `
 `
 
 class AntdCollapseExample extends React.Component {
-  render() {
-    return (
-      <div>
-        <div className="mb-5">
-          <h5 className="mb-3">
-            <strong>Basic</strong>
-          </h5>
-          <Collapse defaultActiveKey={['1']} onChange={callback}>
-            <Panel header="This is panel header 1" key="1">
-              <p>{text}</p>
-            </Panel>
-            <Panel header="This is panel header 2" key="2">
-              <p>{text}</p>
-            </Panel>
-            <Panel header="This is panel header 3" key="3" disabled>
-              <p>{text}</p>
-            </Panel>
-          </Collapse>
-        </div>
-        <div className="mb-5">
-          <h5 className="mb-3">
-            <strong>Borderless</strong>
-          </h5>
-          <Collapse defaultActiveKey={['1']} onChange={callback} bordered={false}>
-            <Panel header="This is panel header 1" key="1">
-              <p>{text}</p>
-            </Panel>
-            <Panel header="This is panel header 2" key="2">
-              <p>{text}</p>
-            </Panel>
-            <Panel header="This is panel header 3" key="3" disabled>
-              <p>{text}</p>
-            </Panel>
-          </Collapse>
-        </div>
-      </div>
-    )
-  }
+    render() {
+        return (
+            <div>
+                <div className="mb-5">
+                    <h5 className="mb-3">
+                        <strong>Basic</strong>
+                    </h5>
+                    <Collapse defaultActiveKey={['1']} onChange={callback}>
+                        <Panel header="This is panel header 1" key="1">
+                            <p>{text}</p>
+                        </Panel>
+                        <Panel header="This is panel header 2" key="2">
+                            <p>{text}</p>
+                        </Panel>
+                        <Panel header="This is panel header 3" key="3" disabled>
+                            <p>{text}</p>
+                        </Panel>
+                    </Collapse>
+                </div>
+                <div className="mb-5">
+                    <h5 className="mb-3">
+                        <strong>Borderless</strong>
+                    </h5>
+                    <Collapse defaultActiveKey={['1']} onChange={callback} bordered={false}>
+                        <Panel header="This is panel header 1" key="1">
+                            <p>{text}</p>
+                        </Panel>
+                        <Panel header="This is panel header 2" key="2">
+                            <p>{text}</p>
+                        </Panel>
+                        <Panel header="This is panel header 3" key="3" disabled>
+                            <p>{text}</p>
+                        </Panel>
+                    </Collapse>
+                </div>
+            </div>
+        )
+    }
 }
 
 export default AntdCollapseExample

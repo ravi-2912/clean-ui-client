@@ -4,11 +4,11 @@
 ////////////////////////////////////////////////////////////////////////////////////////////
 // DARK THEME STYLES
 [data-kit-theme='dark'] {
-  .ant-collapse {
-    background: transparent;
-    &-header {
-      background: $dark-gray-6;
-      color: $dark-gray-1 !important;
+    .ant-collapse {
+        background: transparent;
+        &-header {
+            background: $dark-gray-6;
+            color: $dark-gray-1 !important;
+        }
     }
-  }
 }

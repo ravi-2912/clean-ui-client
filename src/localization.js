@@ -9,23 +9,23 @@ import russian from './locales/ru-RU'
 import chinese from './locales/zh-CN'
 
 const locales = {
-  'en-US': english,
-  'fr-FR': french,
-  'ru-RU': russian,
-  'zh-CN': chinese,
+    'en-US': english,
+    'fr-FR': french,
+    'ru-RU': russian,
+    'zh-CN': chinese,
 }
 
 const mapStateToProps = ({ settings }) => ({ settings })
 
 const Localization = ({ children, settings: { locale } }) => {
-  const currentLocale = locales[locale]
-  return (
-    <ConfigProvider locale={currentLocale.localeAntd}>
-      <IntlProvider locale={currentLocale.locale} messages={currentLocale.messages}>
-        {children}
-      </IntlProvider>
-    </ConfigProvider>
-  )
+    const currentLocale = locales[locale]
+    return (
+        <ConfigProvider locale={currentLocale.localeAntd}>
+            <IntlProvider locale={currentLocale.locale} messages={currentLocale.messages}>
+                {children}
+            </IntlProvider>
+        </ConfigProvider>
+    )
 }
 
 export default connect(mapStateToProps)(Localization)

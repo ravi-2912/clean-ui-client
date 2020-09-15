@@ -5,9 +5,9 @@ import menu from './menu/reducers'
 import settings from './settings/reducers'
 
 export default history =>
-  combineReducers({
-    router: connectRouter(history),
-    user,
-    menu,
-    settings,
-  })
+    combineReducers({
+        router: connectRouter(history),
+        user,
+        menu,
+        settings,
+    })

@@ -4,10 +4,10 @@
 ////////////////////////////////////////////////////////////////////////////////////////////
 // DARK THEME STYLES
 [data-kit-theme='dark'] {
-  .ant-empty {
-    svg * {
-      fill: $gray-5;
-      stroke: $gray-6;
+    .ant-empty {
+        svg * {
+            fill: $gray-5;
+            stroke: $gray-6;
+        }
     }
-  }
 }

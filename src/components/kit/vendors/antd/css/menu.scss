@@ -4,14 +4,14 @@
 ////////////////////////////////////////////////////////////////////////////////////////////
 // DARK THEME STYLES
 [data-kit-theme='dark'] {
-  .ant-menu {
-    &-item {
-      &-group-title {
-        color: $dark-gray-2;
-      }
-      &-disabled {
-        color: $dark-gray-3 !important;
-      }
+    .ant-menu {
+        &-item {
+            &-group-title {
+                color: $dark-gray-2;
+            }
+            &-disabled {
+                color: $dark-gray-3 !important;
+            }
+        }
     }
-  }
 }

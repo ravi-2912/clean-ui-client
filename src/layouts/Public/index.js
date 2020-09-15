@@ -3,7 +3,7 @@ import React from 'react'
 import { withRouter } from 'react-router-dom'
 
 const PublicLayout = ({ children }) => {
-  return children
+    return children
 }
 
 export default withRouter(PublicLayout)

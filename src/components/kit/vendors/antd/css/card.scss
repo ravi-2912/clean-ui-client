@@ -4,22 +4,22 @@
 ////////////////////////////////////////////////////////////////////////////////////////////
 // DARK THEME STYLES
 [data-kit-theme='dark'] {
-  .ant-card {
-    color: $dark-gray-1;
-    &-meta {
-      &-description {
+    .ant-card {
         color: $dark-gray-1;
-      }
-    }
-
-    &-actions {
-      background: $dark-gray-6;
-
-      > li {
-        .anticon {
-          color: $dark-gray-1;
+        &-meta {
+            &-description {
+                color: $dark-gray-1;
+            }
         }
-      }
+
+        &-actions {
+            background: $dark-gray-6;
+
+            > li {
+                .anticon {
+                    color: $dark-gray-1;
+                }
+            }
+        }
     }
-  }
 }

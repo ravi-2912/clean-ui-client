@@ -4,9 +4,9 @@
 ////////////////////////////////////////////////////////////////////////////////////////////
 // DARK THEME STYLES
 [data-kit-theme='dark'] {
-  .ant-progress {
-    &-inner {
-      background: $dark-gray-4;
+    .ant-progress {
+        &-inner {
+            background: $dark-gray-4;
+        }
     }
-  }
 }

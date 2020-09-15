@@ -1,8 +1,8 @@
 @import 'components/mixins.scss';
 
 .table {
-  white-space: nowrap !important;
-  :global(.ant-table-body) {
-    overflow-x: auto !important;
-  }
+    white-space: nowrap !important;
+    :global(.ant-table-body) {
+        overflow-x: auto !important;
+    }
 }

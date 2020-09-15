@@ -4,9 +4,9 @@
 ////////////////////////////////////////////////////////////////////////////////////////////
 // DARK THEME STYLES
 [data-kit-theme='dark'] {
-  .ant-table-column-has-sorters {
-    &:hover {
-      background: $dark-gray-5 !important;
+    .ant-table-column-has-sorters {
+        &:hover {
+            background: $dark-gray-5 !important;
+        }
     }
-  }
 }

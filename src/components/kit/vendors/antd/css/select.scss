@@ -2,67 +2,67 @@
 @import 'components/mixins.scss';
 
 .ant-select {
-  &-open {
-    .ant-select-selection {
-      border-color: $primary;
+    &-open {
+        .ant-select-selection {
+            border-color: $primary;
+        }
     }
-  }
 
-  &-selection {
-    &:hover {
-      border-color: $primary;
+    &-selection {
+        &:hover {
+            border-color: $primary;
+        }
     }
-  }
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////
 // DARK THEME STYLES
 [data-kit-theme='dark'] {
-  .ant-select {
-    &-multiple {
-      .ant-select-selection-item {
-        color: $dark-gray-1;
-        background: $primary;
+    .ant-select {
+        &-multiple {
+            .ant-select-selection-item {
+                color: $dark-gray-1;
+                background: $primary;
 
-        &-remove {
-          color: $dark-gray-1;
+                &-remove {
+                    color: $dark-gray-1;
+                }
+            }
         }
-      }
-    }
 
-    &-item-option-active:not(.ant-select-item-option-disabled),
-    &-item-option-selected:not(.ant-select-item-option-disabled) {
-      color: $dark-gray-1;
-      background: $primary;
-    }
-
-    // antd v3 styles
-    &-selection {
-      &--multiple {
-        .ant-select-selection__choice {
-          color: $dark-gray-1;
-          background: $primary;
-
-          &-remove {
-            color: $dark-gray-3;
-          }
+        &-item-option-active:not(.ant-select-item-option-disabled),
+        &-item-option-selected:not(.ant-select-item-option-disabled) {
+            color: $dark-gray-1;
+            background: $primary;
         }
-      }
-    }
 
-    &-dropdown-menu-item {
-      &-selected {
-        color: $dark-gray-1;
-        background: $primary;
-      }
-    }
+        // antd v3 styles
+        &-selection {
+            &--multiple {
+                .ant-select-selection__choice {
+                    color: $dark-gray-1;
+                    background: $primary;
 
-    &-tree-dropdown {
-      .ant-select-dropdown-search {
-        .ant-select-search__field {
-          background: $dark-gray-5;
+                    &-remove {
+                        color: $dark-gray-3;
+                    }
+                }
+            }
         }
-      }
+
+        &-dropdown-menu-item {
+            &-selected {
+                color: $dark-gray-1;
+                background: $primary;
+            }
+        }
+
+        &-tree-dropdown {
+            .ant-select-dropdown-search {
+                .ant-select-search__field {
+                    background: $dark-gray-5;
+                }
+            }
+        }
     }
-  }
 }

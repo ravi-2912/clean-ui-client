@@ -4,13 +4,13 @@
 ////////////////////////////////////////////////////////////////////////////////////////////
 // DARK THEME STYLES
 [data-kit-theme='dark'] {
-  .ant-cascader {
-    &-menu-item-active {
-      background: $primary;
+    .ant-cascader {
+        &-menu-item-active {
+            background: $primary;
 
-      &:hover {
-        background: $primary;
-      }
+            &:hover {
+                background: $primary;
+            }
+        }
     }
-  }
 }

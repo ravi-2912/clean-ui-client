@@ -1,7 +1,7 @@
 @import 'components/mixins.scss';
 
 .chart {
-  :global(.ct-bar) {
-    stroke-width: 15px;
-  }
+    :global(.ct-bar) {
+        stroke-width: 15px;
+    }
 }

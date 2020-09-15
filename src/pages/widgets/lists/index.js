@@ -26,191 +26,191 @@ import List21v1 from 'components/kit/widgets/Lists/21v1'
 import List21v2 from 'components/kit/widgets/Lists/21v2'
 
 const Widgets = () => {
-  return (
-    <div>
-      <Helmet title="Widgets / Lists" />
-      <div className="row">
-        <div className="col-xl-4 col-lg-12">
-          <div>
-            <h2 className="badge-example">List / 1</h2>
-            <div className="card">
-              <div className="card-body">
-                <List1 />
-              </div>
+    return (
+        <div>
+            <Helmet title="Widgets / Lists" />
+            <div className="row">
+                <div className="col-xl-4 col-lg-12">
+                    <div>
+                        <h2 className="badge-example">List / 1</h2>
+                        <div className="card">
+                            <div className="card-body">
+                                <List1 />
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h2 className="badge-example">List / 5</h2>
+                        <div className="card">
+                            <div className="card-body">
+                                <List5 />
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h2 className="badge-example">List / 8</h2>
+                        <div className="card">
+                            <div className="card-body">
+                                <List8 />
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h2 className="badge-example">List / 11</h2>
+                        <div className="card">
+                            <div className="card-body">
+                                <List11 />
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h2 className="badge-example">List / 14</h2>
+                        <div className="card">
+                            <div className="card-body">
+                                <List14 />
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h2 className="badge-example">List / 17</h2>
+                        <div className="card">
+                            <div className="card-body">
+                                <List17 />
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h2 className="badge-example">List / 20</h2>
+                        <div className="card">
+                            <div className="card-body">
+                                <List20 />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className="col-xl-4 col-lg-12">
+                    <div>
+                        <h2 className="badge-example">List / 2</h2>
+                        <div className="card">
+                            <List2 />
+                        </div>
+                    </div>
+                    <div>
+                        <h2 className="badge-example">List / 6</h2>
+                        <div className="card">
+                            <div className="card-body">
+                                <List6 />
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h2 className="badge-example">List / 9</h2>
+                        <div className="card">
+                            <div className="card-body">
+                                <List9 />
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h2 className="badge-example">List / 12</h2>
+                        <div className="card">
+                            <div className="card-body">
+                                <List12 />
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h2 className="badge-example">List / 15</h2>
+                        <div className="card">
+                            <div className="card-body">
+                                <List15 />
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h2 className="badge-example">List / 19</h2>
+                        <div className="card">
+                            <div className="card-body">
+                                <List19 />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className="col-xl-4 col-lg-12">
+                    <div>
+                        <h2 className="badge-example">List / 3</h2>
+                        <div className="card">
+                            <div className="card-body">
+                                <List3 />
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h2 className="badge-example">List / 4</h2>
+                        <div className="card">
+                            <div className="card-body">
+                                <List4 />
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h2 className="badge-example">List / 7</h2>
+                        <div className="card">
+                            <div className="card-body">
+                                <List7 />
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h2 className="badge-example">List / 10</h2>
+                        <div className="card">
+                            <div className="card-body">
+                                <List10 />
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h2 className="badge-example">List / 13</h2>
+                        <div className="card">
+                            <div className="card-body">
+                                <List13 />
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h2 className="badge-example">List / 16</h2>
+                        <div className="card">
+                            <div className="card-body">
+                                <List16 />
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h2 className="badge-example">List / 18</h2>
+                        <div className="card">
+                            <div className="card-body">
+                                <List18 />
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
-          <div>
-            <h2 className="badge-example">List / 5</h2>
-            <div className="card">
-              <div className="card-body">
-                <List5 />
-              </div>
+            <div className="row">
+                <div className="col-lg-4">
+                    <h2 className="badge-example">List / 21</h2>
+                    <List21 />
+                </div>
+                <div className="col-lg-4">
+                    <h2 className="badge-example">List / 21-1</h2>
+                    <List21v1 />
+                </div>
+                <div className="col-lg-4">
+                    <h2 className="badge-example">List / 22-2</h2>
+                    <List21v2 />
+                </div>
             </div>
-          </div>
-          <div>
-            <h2 className="badge-example">List / 8</h2>
-            <div className="card">
-              <div className="card-body">
-                <List8 />
-              </div>
-            </div>
-          </div>
-          <div>
-            <h2 className="badge-example">List / 11</h2>
-            <div className="card">
-              <div className="card-body">
-                <List11 />
-              </div>
-            </div>
-          </div>
-          <div>
-            <h2 className="badge-example">List / 14</h2>
-            <div className="card">
-              <div className="card-body">
-                <List14 />
-              </div>
-            </div>
-          </div>
-          <div>
-            <h2 className="badge-example">List / 17</h2>
-            <div className="card">
-              <div className="card-body">
-                <List17 />
-              </div>
-            </div>
-          </div>
-          <div>
-            <h2 className="badge-example">List / 20</h2>
-            <div className="card">
-              <div className="card-body">
-                <List20 />
-              </div>
-            </div>
-          </div>
         </div>
-        <div className="col-xl-4 col-lg-12">
-          <div>
-            <h2 className="badge-example">List / 2</h2>
-            <div className="card">
-              <List2 />
-            </div>
-          </div>
-          <div>
-            <h2 className="badge-example">List / 6</h2>
-            <div className="card">
-              <div className="card-body">
-                <List6 />
-              </div>
-            </div>
-          </div>
-          <div>
-            <h2 className="badge-example">List / 9</h2>
-            <div className="card">
-              <div className="card-body">
-                <List9 />
-              </div>
-            </div>
-          </div>
-          <div>
-            <h2 className="badge-example">List / 12</h2>
-            <div className="card">
-              <div className="card-body">
-                <List12 />
-              </div>
-            </div>
-          </div>
-          <div>
-            <h2 className="badge-example">List / 15</h2>
-            <div className="card">
-              <div className="card-body">
-                <List15 />
-              </div>
-            </div>
-          </div>
-          <div>
-            <h2 className="badge-example">List / 19</h2>
-            <div className="card">
-              <div className="card-body">
-                <List19 />
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="col-xl-4 col-lg-12">
-          <div>
-            <h2 className="badge-example">List / 3</h2>
-            <div className="card">
-              <div className="card-body">
-                <List3 />
-              </div>
-            </div>
-          </div>
-          <div>
-            <h2 className="badge-example">List / 4</h2>
-            <div className="card">
-              <div className="card-body">
-                <List4 />
-              </div>
-            </div>
-          </div>
-          <div>
-            <h2 className="badge-example">List / 7</h2>
-            <div className="card">
-              <div className="card-body">
-                <List7 />
-              </div>
-            </div>
-          </div>
-          <div>
-            <h2 className="badge-example">List / 10</h2>
-            <div className="card">
-              <div className="card-body">
-                <List10 />
-              </div>
-            </div>
-          </div>
-          <div>
-            <h2 className="badge-example">List / 13</h2>
-            <div className="card">
-              <div className="card-body">
-                <List13 />
-              </div>
-            </div>
-          </div>
-          <div>
-            <h2 className="badge-example">List / 16</h2>
-            <div className="card">
-              <div className="card-body">
-                <List16 />
-              </div>
-            </div>
-          </div>
-          <div>
-            <h2 className="badge-example">List / 18</h2>
-            <div className="card">
-              <div className="card-body">
-                <List18 />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className="row">
-        <div className="col-lg-4">
-          <h2 className="badge-example">List / 21</h2>
-          <List21 />
-        </div>
-        <div className="col-lg-4">
-          <h2 className="badge-example">List / 21-1</h2>
-          <List21v1 />
-        </div>
-        <div className="col-lg-4">
-          <h2 className="badge-example">List / 22-2</h2>
-          <List21v2 />
-        </div>
-      </div>
-    </div>
-  )
+    )
 }
 
 export default Widgets

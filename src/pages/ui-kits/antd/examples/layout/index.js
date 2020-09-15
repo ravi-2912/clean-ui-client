@@ -5,43 +5,43 @@ import { Layout } from 'antd'
 const { Header, Footer, Sider, Content } = Layout
 
 class AntdLayoutExample extends React.Component {
-  render() {
-    return (
-      <div id="components-layout-demo-basic">
-        <Layout>
-          <Header>Header</Header>
-          <Content>Content</Content>
-          <Footer>Footer</Footer>
-        </Layout>
+    render() {
+        return (
+            <div id="components-layout-demo-basic">
+                <Layout>
+                    <Header>Header</Header>
+                    <Content>Content</Content>
+                    <Footer>Footer</Footer>
+                </Layout>
 
-        <Layout>
-          <Header>Header</Header>
-          <Layout>
-            <Sider>Sider</Sider>
-            <Content>Content</Content>
-          </Layout>
-          <Footer>Footer</Footer>
-        </Layout>
+                <Layout>
+                    <Header>Header</Header>
+                    <Layout>
+                        <Sider>Sider</Sider>
+                        <Content>Content</Content>
+                    </Layout>
+                    <Footer>Footer</Footer>
+                </Layout>
 
-        <Layout>
-          <Header>Header</Header>
-          <Layout>
-            <Content>Content</Content>
-            <Sider>Sider</Sider>
-          </Layout>
-          <Footer>Footer</Footer>
-        </Layout>
+                <Layout>
+                    <Header>Header</Header>
+                    <Layout>
+                        <Content>Content</Content>
+                        <Sider>Sider</Sider>
+                    </Layout>
+                    <Footer>Footer</Footer>
+                </Layout>
 
-        <Layout>
-          <Sider>Sider</Sider>
-          <Layout>
-            <Header>Header</Header>
-            <Content>Content</Content>
-            <Footer>Footer</Footer>
-          </Layout>
-        </Layout>
-        <style>
-          {`
+                <Layout>
+                    <Sider>Sider</Sider>
+                    <Layout>
+                        <Header>Header</Header>
+                        <Content>Content</Content>
+                        <Footer>Footer</Footer>
+                    </Layout>
+                </Layout>
+                <style>
+                    {`
             #components-layout-demo-basic {
               text-align: center;
             }
@@ -71,10 +71,10 @@ class AntdLayoutExample extends React.Component {
               margin: 0;
             }
           `}
-        </style>
-      </div>
-    )
-  }
+                </style>
+            </div>
+        )
+    }
 }
 
 export default AntdLayoutExample

@@ -4,33 +4,33 @@
 /* LIST GROUP */
 
 .list-group-item {
-  border-color: $border;
+    border-color: $border;
 
-  &.active {
-    background: $primary;
-  }
+    &.active {
+        background: $primary;
+    }
 }
 
 // dark theme
 [data-kit-theme='dark'] {
-  .list-group-item {
-    border-color: $dark-gray-4;
-    background: $dark-gray-6;
-    color: inherit;
+    .list-group-item {
+        border-color: $dark-gray-4;
+        background: $dark-gray-6;
+        color: inherit;
 
-    &.active {
-      background: $primary !important;
-    }
+        &.active {
+            background: $primary !important;
+        }
 
-    &-action {
-      color: $white !important;
-      &:hover {
-        background: $dark-gray-5;
-      }
-      &.disabled {
-        opacity: 0.5;
-        background: transparent;
-      }
+        &-action {
+            color: $white !important;
+            &:hover {
+                background: $dark-gray-5;
+            }
+            &.disabled {
+                opacity: 0.5;
+                background: transparent;
+            }
+        }
     }
-  }
 }

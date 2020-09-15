@@ -33,12 +33,12 @@ const store = createStore(reducers(history), compose(applyMiddleware(...middlewa
 sagaMiddleware.run(sagas)
 
 ReactDOM.render(
-  <Provider store={store}>
-    <Localization>
-      <Router history={history} />
-    </Localization>
-  </Provider>,
-  document.getElementById('root'),
+    <Provider store={store}>
+        <Localization>
+            <Router history={history} />
+        </Localization>
+    </Provider>,
+    document.getElementById('root'),
 )
 
 // If you want your app to work offline and load faster, you can change
