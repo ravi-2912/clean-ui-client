@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import PerfectScrollbar from 'react-perfect-scrollbar'
@@ -8,26 +9,26 @@ import style from './style.module.scss'
 
 const mapStateToProps = ({ settings }) => ({
     isSidebarOpen: settings.isSidebarOpen,
-    isMenuCollapsed: settings.isMenuCollapsed,
-    isMenuShadow: settings.isMenuShadow,
-    isMenuUnfixed: settings.isMenuUnfixed,
-    menuLayoutType: settings.menuLayoutType,
-    menuColor: settings.menuColor,
-    authPagesColor: settings.authPagesColor,
-    isTopbarFixed: settings.isTopbarFixed,
-    isContentMaxWidth: settings.isContentMaxWidth,
-    isAppMaxWidth: settings.isAppMaxWidth,
-    isGrayBackground: settings.isGrayBackground,
-    isGrayTopbar: settings.isGrayTopbar,
-    isCardShadow: settings.isCardShadow,
-    isSquaredBorders: settings.isSquaredBorders,
-    isBorderless: settings.isBorderless,
+    isMenuCollapsed: false, // settings.isMenuCollapsed,
+    isMenuShadow: true, // settings.isMenuShadow,
+    isMenuUnfixed: false, // settings.isMenuUnfixed,
+    menuLayoutType: 'left', // settings.menuLayoutType,
+    menuColor: 'white', // settings.menuColor,
+    authPagesColor: 'image', // settings.authPagesColor,
+    isTopbarFixed: false, // settings.isTopbarFixed,
+    isContentMaxWidth: false, // settings.isContentMaxWidth,
+    isAppMaxWidth: false, // settings.isAppMaxWidth,
+    isGrayBackground: true, // settings.isGrayBackground,
+    isGrayTopbar: false, // settings.isGrayTopbar,
+    isCardShadow: true, // settings.isCardShadow,
+    isSquaredBorders: false, // settings.isSquaredBorders,
+    isBorderless: false, // settings.isBorderless,
     routerAnimation: settings.routerAnimation,
-    locale: settings.locale,
+    locale: 'en-US', // settings.locale,
     theme: settings.theme,
-    primaryColor: settings.primaryColor,
-    leftMenuWidth: settings.leftMenuWidth,
-    logo: settings.logo,
+    primaryColor: '#4b7cf3', // settings.primaryColor,
+    leftMenuWidth: 256, // settings.leftMenuWidth,
+    logo: 'Trading', // settings.logo,
 })
 
 const Sidebar = ({
@@ -449,22 +450,7 @@ const Sidebar = ({
                     </div>
                 </PerfectScrollbar>
             </div>
-            <Tooltip title="Settings" placement="left">
-                <a
-                    role="button"
-                    tabIndex="0"
-                    onFocus={e => {
-                        e.preventDefault()
-                    }}
-                    onKeyPress={toggleSettings}
-                    onClick={toggleSettings}
-                    style={{ bottom: 'calc(50% + 120px)' }}
-                    className={style.cui__sidebar__toggleButton}
-                >
-                    <i className="fe fe-settings" />
-                </a>
-            </Tooltip>
-            <Tooltip title="Switch Dark / Light Theme" placement="left">
+            <Tooltip title="Switch Dark / Light Theme" placement="bottom">
                 <a
                     role="button"
                     tabIndex="0"
@@ -474,48 +460,25 @@ const Sidebar = ({
                     onKeyPress={() => setTheme(theme === 'default' ? 'dark' : 'default')}
                     onClick={() => setTheme(theme === 'default' ? 'dark' : 'default')}
                     style={{ bottom: 'calc(50% + 60px)' }}
-                    className={style.cui__sidebar__toggleButton}
+                    className={`${style.topbar_item} mr-3`}
                 >
-                    {theme === 'default' && <i className="fe fe-moon" />}
-                    {theme !== 'default' && <i className="fe fe-sun" />}
+                    {theme === 'default' && <i className={`${style.topbar_icon} fe fe-moon`} />}
+                    {theme !== 'default' && <i className={`${style.topbar_icon} fe fe-sun`} />}
                 </a>
             </Tooltip>
-            <Tooltip title="Set Primary Color" placement="left">
+            <Tooltip title="Settings" placement="bottom">
                 <a
-                    style={{ bottom: 'calc(50%)' }}
-                    className={`${style.cui__sidebar__toggleButton} ${style.color} ${
-                        primaryColor === defaultColor ? style.reset : ''
-                    }`}
+                    role="button"
+                    tabIndex="0"
+                    onFocus={e => {
+                        e.preventDefault()
+                    }}
+                    onKeyPress={toggleSettings}
+                    onClick={toggleSettings}
+                    style={{ bottom: 'calc(50% + 120px)' }}
+                    className={style.topbar_item}
                 >
-                    <button
-                        type="button"
-                        tabIndex="0"
-                        onFocus={e => {
-                            e.preventDefault()
-                        }}
-                        onKeyPress={resetColor}
-                        onClick={resetColor}
-                    >
-                        <i className="fe fe-x-circle" />
-                    </button>
-                    <input
-                        type="color"
-                        id="colorPicker"
-                        onChange={e => selectColor(e.target.value)}
-                        value={primaryColor}
-                    />
-                    <i className="fe fe-package" />
-                </a>
-            </Tooltip>
-            <Tooltip title="Documentation" placement="left">
-                <a
-                    href="https://docs.cleanuitemplate.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{ bottom: 'calc(50% - 60px)' }}
-                    className={style.cui__sidebar__toggleButton}
-                >
-                    <i className="fe fe-book-open" />
+                    <i className={`${style.topbar_icon} fe fe-settings`} />
                 </a>
             </Tooltip>
         </div>

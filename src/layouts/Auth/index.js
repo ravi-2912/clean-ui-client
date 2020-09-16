@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from 'react'
 import { connect } from 'react-redux'
 import { Layout } from 'antd'
@@ -28,8 +29,6 @@ const AuthLayout = ({
     return (
         <Layout>
             <Layout.Content>
-                <Sidebar />
-                <SupportChat />
                 <div
                     className={classNames(`${style.container}`, {
                         cui__layout__squaredBorders: isSquaredBorders,

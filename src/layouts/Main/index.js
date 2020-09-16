@@ -7,7 +7,9 @@ import TopBar from 'components/cleanui/layout/TopBar'
 import Breadcrumbs from 'components/cleanui/layout/Breadcrumbs'
 import Menu from 'components/cleanui/layout/Menu'
 import Footer from 'components/cleanui/layout/Footer'
+// eslint-disable-next-line no-unused-vars
 import Sidebar from 'components/cleanui/layout/Sidebar'
+// eslint-disable-next-line no-unused-vars
 import SupportChat from 'components/cleanui/layout/SupportChat'
 
 const mapStateToProps = ({ settings }) => ({
@@ -44,8 +46,6 @@ const MainLayout = ({
                     cui__layout__borderless: isBorderless,
                 })}
             >
-                <Sidebar />
-                <SupportChat />
                 <Menu />
                 <Layout>
                     <Layout.Header

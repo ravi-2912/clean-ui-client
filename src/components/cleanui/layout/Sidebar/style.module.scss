@@ -1,5 +1,26 @@
 @import 'components/mixins.scss';
 
+.topbar_item {
+    cursor: pointer;
+    margin-right: rem(8);
+
+    &:last-child {
+        margin-right: 0;
+    }
+}
+
+.topbar_icon {
+    position: relative;
+    bottom: -2px;
+    font-size: rem(17);
+    color: $gray-5;
+    @include transition-slow;
+
+    &:hover {
+        color: $primary;
+    }
+}
+
 .cui__sidebar {
     width: rem(300);
     position: fixed;
@@ -103,11 +124,11 @@
             width: 0;
             height: 0;
 
-            &:checked + .air__sidebar__switch__slider {
+            &:checked+.air__sidebar__switch__slider {
                 background-color: $blue;
             }
 
-            &:checked + .air__sidebar__switch__slider:before {
+            &:checked+.air__sidebar__switch__slider:before {
                 transform: translateX(26px);
             }
         }
@@ -188,11 +209,9 @@
 
             &__img {
                 &:after {
-                    background: linear-gradient(
-                        to right,
-                        rgba(240, 240, 240, 1) 0%,
-                        rgba(210, 210, 220, 1) 100%
-                    );
+                    background: linear-gradient(to right,
+                            rgba(240, 240, 240, 1) 0%,
+                            rgba(210, 210, 220, 1) 100%);
                 }
             }
         }
