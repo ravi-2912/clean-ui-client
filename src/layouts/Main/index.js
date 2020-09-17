@@ -12,15 +12,15 @@ import Sidebar from 'components/cleanui/layout/Sidebar'
 // eslint-disable-next-line no-unused-vars
 import SupportChat from 'components/cleanui/layout/SupportChat'
 
-const mapStateToProps = ({ settings }) => ({
-    isContentMaxWidth: settings.isContentMaxWidth,
-    isAppMaxWidth: settings.isAppMaxWidth,
-    isGrayBackground: settings.isGrayBackground,
-    isSquaredBorders: settings.isSquaredBorders,
-    isCardShadow: settings.isCardShadow,
-    isBorderless: settings.isBorderless,
-    isTopbarFixed: settings.isTopbarFixed,
-    isGrayTopbar: settings.isGrayTopbar,
+const mapStateToProps = () => ({
+    isContentMaxWidth: false, // settings.isContentMaxWidth,
+    isAppMaxWidth: false, // settings.isAppMaxWidth,
+    isGrayBackground: true, // settings.isGrayBackground,
+    isSquaredBorders: false, // settings.isSquaredBorders,
+    isCardShadow: true, // settings.isCardShadow,
+    isBorderless: false, // settings.isBorderless,
+    isTopbarFixed: true, // settings.isTopbarFixed,
+    isGrayTopbar: false, // settings.isGrayTopbar,
 })
 
 const MainLayout = ({
