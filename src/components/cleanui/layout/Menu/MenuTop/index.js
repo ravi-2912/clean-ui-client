@@ -14,14 +14,7 @@ const mapStateToProps = ({ menu, settings, user }) => ({
     role: user.role,
 })
 
-const MenuTop = ({
-    menuData = [],
-    location: { pathname },
-
-    menuColor,
-    logo,
-    role,
-}) => {
+const MenuTop = ({ menuData = [], location: { pathname }, menuColor, logo, role }) => {
     const [selectedKeys, setSelectedKeys] = useState(store.get('app.menu.selectedKeys') || [])
 
     useEffect(() => {
