@@ -12,10 +12,10 @@ const mapStateToProps = ({ menu, settings, user }) => ({
     menuData: menu.menuData,
     isMenuCollapsed: settings.isMenuCollapsed,
     isMobileView: settings.isMobileView,
-    isMenuUnfixed: settings.isMenuUnfixed,
-    isMenuShadow: settings.isMenuShadow,
-    leftMenuWidth: settings.leftMenuWidth,
-    menuColor: settings.menuColor,
+    isMenuUnfixed: false, // settings.isMenuUnfixed,
+    isMenuShadow: true, // settings.isMenuShadow,
+    leftMenuWidth: 256, // settings.leftMenuWidth,
+    menuColor: 'white', // settings.menuColor,
     logo: settings.logo,
     role: user.role,
 })
@@ -70,7 +70,13 @@ const MenuLeft = ({
 
     const onOpenChange = keys => {
         const latestOpenKey = keys.find(key => openedKeys.indexOf(key) === -1)
-        const openKey = latestOpenKey ? [latestOpenKey] : []
+        const menuItemKeys = menuData.map(menuItem => menuItem.key).filter(el => el != null)
+        let openKey
+        if (menuItemKeys.indexOf(latestOpenKey) === -1) {
+            openKey = keys
+        } else {
+            openKey = latestOpenKey ? [latestOpenKey] : []
+        }
         store.set('app.menu.openedKeys', openKey)
         setOpenedKeys(openKey)
     }
