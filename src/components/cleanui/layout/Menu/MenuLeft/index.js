@@ -24,7 +24,6 @@ const MenuLeft = ({
     dispatch,
     menuData = [],
     location: { pathname },
-
     isMenuCollapsed,
     isMobileView,
     isMenuUnfixed,
@@ -70,8 +69,10 @@ const MenuLeft = ({
     }
 
     const onOpenChange = keys => {
-        store.set('app.menu.openedKeys', keys)
-        setOpenedKeys(keys)
+        const latestOpenKey = keys.find(key => openedKeys.indexOf(key) === -1)
+        const openKey = latestOpenKey ? [latestOpenKey] : []
+        store.set('app.menu.openedKeys', openKey)
+        setOpenedKeys(openKey)
     }
 
     const handleClick = e => {
