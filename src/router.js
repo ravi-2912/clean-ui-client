@@ -28,6 +28,11 @@ const routes = [
         Component: lazy(() => import('pages/dashboard/crypto')),
         exact: true,
     },
+    {
+        path: '/forex/tools/charting',
+        Component: lazy(() => import('pages/forextools/charting')),
+        exact: true,
+    },
 
     // Ecommerce
     {
