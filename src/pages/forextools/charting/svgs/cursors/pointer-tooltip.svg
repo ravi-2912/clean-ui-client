@@ -1,6 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
     <g fill="none" fill-rule="evenodd">
         <rect width="32" height="32"></rect>
+        <rect width="10" height="10" x="18.5" y="18.5" stroke="currentColor"></rect>
+        <rect width="7" height="1" x="20" y="21" fill="currentColor"></rect>
+        <rect width="7" height="1" x="20" y="23" fill="currentColor"></rect>
+        <rect width="7" height="1" x="20" y="25" fill="currentColor"></rect>
         <path fill="currentColor"
             d="M9,9 L15.154,25 L17.52,17.521 L25,15.154 L9,9 Z M10.742,10.742 L21.975,15.062 L17.219,16.567 L16.724,16.724 L16.567,17.219 L15.062,21.976 L10.742,10.742 Z">
         </path>
