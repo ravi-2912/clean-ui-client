@@ -7,11 +7,13 @@ import { Helmet } from 'react-helmet'
 import PublicLayout from './Public'
 import AuthLayout from './Auth'
 import MainLayout from './Main'
+import ChartingLayout from './Charting'
 
 const Layouts = {
     public: PublicLayout,
     auth: AuthLayout,
     main: MainLayout,
+    charting: ChartingLayout,
 }
 
 const mapStateToProps = ({ user }) => ({ user })
@@ -36,6 +38,9 @@ const Layout = ({ user, children, location: { pathname, search } }) => {
         }
         if (/^\/auth(?=\/|$)/i.test(pathname)) {
             return 'auth'
+        }
+        if (/\w*(charting)\w*$/i.test(pathname)) {
+            return 'charting'
         }
         return 'main'
     }
