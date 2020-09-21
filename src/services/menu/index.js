@@ -35,6 +35,16 @@ export default async function getMenuData() {
         },
         {
             category: true,
+            title: 'Forex Tools',
+        },
+        {
+            title: 'Charting',
+            key: 'charting',
+            icon: 'fa fa-area-chart',
+            url: '/forex/tools/charting',
+        },
+        {
+            category: true,
             title: 'Apps & Pages',
         },
         {
