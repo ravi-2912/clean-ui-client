@@ -1,0 +1,47 @@
+@import 'components/mixins.scss';
+
+.topbar {
+    border-bottom: 2px solid $gray-4;
+    height: 39px;
+}
+
+.chartPane {
+    height: calc(100vh - 64px - 39px) !important;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.footer {
+    background-color: aqua;
+    overflow: hidden !important;
+}
+
+.splitterHorizontal {
+    height: 2px !important;
+    background-color: $gray-4 !important;
+    border: none !important;
+
+    &:hover {
+        background-color: $gray-5 !important;
+
+        transition: all 0.05s ease !important;
+        -o-transition: all 0.05s ease !important;
+        -moz-transition: all 0.05s ease !important;
+        -webkit-transition: all 0.05s ease !important;
+    }
+}
+
+.splitterVertical {
+    width: 2px !important;
+    background-color: $gray-4 !important;
+    border: none !important;
+
+    &:hover {
+        background-color: $gray-5 !important;
+
+        transition: all 0.05s ease !important;
+        -o-transition: all 0.05s ease !important;
+        -moz-transition: all 0.05s ease !important;
+        -webkit-transition: all 0.05s ease !important;
+    }
+}

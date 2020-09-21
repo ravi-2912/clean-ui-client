@@ -1,0 +1,25 @@
+@import 'components/kit/vendors/antd/css/tabs.scss';
+@import 'components/mixins.scss';
+
+.ant-tabs-bar {
+    border-bottom: 2px solid $gray-4 !important;
+}
+
+.ant-tabs-nav .ant-tabs-tab {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+    margin-right: rem(0) !important;
+    border: 1px solid $gray-4;
+    border-top: 0;
+
+    &:last-child,
+    &:last-of-type {
+        margin-right: 0 !important;
+        border-right: 2px solid $gray-4;
+    }
+
+    &:first-child,
+    &:first-of-type {
+        border-left: none;
+    }
+}
