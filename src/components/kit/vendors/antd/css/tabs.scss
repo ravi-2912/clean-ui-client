@@ -22,6 +22,7 @@
         border-bottom: none;
         height: 100%;
     }
+
     .ant-tabs-nav-container,
     .ant-tabs-nav-wrap,
     .ant-tabs-nav-scroll {
@@ -102,6 +103,7 @@
         .ant-tabs-card-bar {
             .ant-tabs-tab {
                 background: transparent;
+
                 &-active {
                     background: $dark-gray-4;
                 }
