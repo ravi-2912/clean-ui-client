@@ -15,11 +15,11 @@
     &:last-child,
     &:last-of-type {
         margin-right: 0 !important;
-        border-right: 2px solid $gray-4;
+        border-right: 2px solid $gray-4 !important;
     }
 
     &:first-child,
     &:first-of-type {
-        border-left: none;
+        border-left: none !important;
     }
 }

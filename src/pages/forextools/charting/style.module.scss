@@ -6,7 +6,7 @@
 }
 
 .chartPane {
-    height: calc(100vh - 64px - 39px) !important;
+    height: calc(100vh - 64px - 39px - 4px) !important;
     padding-left: 0;
     padding-right: 0;
 }
@@ -44,4 +44,12 @@
         -moz-transition: all 0.05s ease !important;
         -webkit-transition: all 0.05s ease !important;
     }
+}
+
+.tabTopBorder {
+    border-top: 2px solid $gray-4 !important;
+}
+
+.containerBorder {
+    border: 2px solid $gray-4 !important;
 }

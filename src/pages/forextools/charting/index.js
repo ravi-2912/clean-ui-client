@@ -11,15 +11,9 @@ import './tabs.scss'
 const Charting = () => {
     const MIN_BOTTOM_SIZE = 39
     const [visible, setVisible] = useState(false)
-    const [collapseRightPane, setCollapseRightPane] = useState(false)
-    const [bottomPaneState, setBottomPaneState] = useState({
-        direction: -1,
-        minSize: MIN_BOTTOM_SIZE,
-    })
-    const [rightPaneState, setRightPaneState] = useState({
-        direction: -1,
-        minSize: 0,
-    })
+    const [collapsedRightPane, setCollapsedRightPane] = useState(false)
+    const [collapsedBottomPane, setCollapsedBottomPane] = useState(false)
+    const [collapsedLeftPane, setCollapsedLeftPane] = useState(false)
 
     const breakpoint = 'lg'
     const displayClass = `d-none d-${breakpoint}-block`
@@ -39,21 +33,25 @@ const Charting = () => {
                     <Col className={style.chartPane}>
                         <ReflexContainer orientation="vertical" windowResizeAware>
                             <ReflexElement className="w-100" minSize={600}>
-                                <ReflexContainer orientation="horizontal">
+                                <ReflexContainer orientation="horizontal" windowResizeAware>
                                     <ReflexElement className="top-pane">
-                                        <ReflexContainer orientation="vertical">
-                                            <ReflexElement
+                                        <ReflexContainer orientation="vertical" windowResizeAware>
+                                            <ControlledElement
+                                                minSize={0}
                                                 maxSize={450}
-                                                minSize={100}
+                                                direction={1}
+                                                threshold={80}
+                                                onCollapse={setCollapsedLeftPane}
                                                 className={`top-left-pane ${displayClass}`}
+                                                // size={collapsedLeftPane && 0}
                                             >
                                                 <div className="pane-content">
                                                     <span>Settings</span>
                                                 </div>
-                                            </ReflexElement>
+                                            </ControlledElement>
                                             <ReflexSplitter
                                                 className={`${style.splitterVertical} ${displayClass}`}
-                                                propagate
+                                                // propagate
                                             />
                                             <ReflexElement
                                                 className="top-middle-pane"
@@ -65,11 +63,21 @@ const Charting = () => {
                                             </ReflexElement>
                                         </ReflexContainer>
                                     </ReflexElement>
-                                    <ReflexSplitter
-                                        className={style.splitterHorizontal}
-                                        propagate
-                                    />
-                                    <ControlledElement {...bottomPaneState} threshold={80}>
+                                    {!collapsedBottomPane && (
+                                        <ReflexSplitter
+                                            className={style.splitterHorizontal}
+                                            // propagate
+                                        />
+                                    )}
+                                    <ControlledElement
+                                        direction={-1}
+                                        minSize={37}
+                                        threshold={80}
+                                        tabbedPane
+                                        onCollapse={setCollapsedBottomPane}
+                                        // size={collapsedBottomPane && 39}
+                                        style={{ borderTop: '2px solid black' }}
+                                    >
                                         {[...Array(4).keys()].map(i => (
                                             <Tabs.TabPane
                                                 tab={`Tab ${i}`}
@@ -82,17 +90,20 @@ const Charting = () => {
                                     </ControlledElement>
                                 </ReflexContainer>
                             </ReflexElement>
-                            {!collapseRightPane && (
+                            {!collapsedRightPane && (
                                 <ReflexSplitter
                                     className={`${style.splitterVertical} ${displayClass}`}
-                                    propagate
+                                    // propagate
                                 />
                             )}
-                            {!collapseRightPane && (
+                            {!collapsedRightPane && (
                                 <ControlledElement
-                                    {...rightPaneState}
-                                    onCollapse={() => setCollapseRightPane(true)}
+                                    tabbedPane
+                                    minSize={0}
+                                    direction={-1}
+                                    onCollapse={setCollapsedRightPane}
                                     threshold={120}
+                                    // size={collapsedRightPane && 1}
                                 >
                                     {[...Array(4).keys()].map(i => (
                                         <Tabs.TabPane tab={`Tab ${i}`} key={i} disabled={i === 28}>
