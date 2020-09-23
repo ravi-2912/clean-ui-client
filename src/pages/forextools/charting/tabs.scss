@@ -1,25 +1,34 @@
 @import 'components/kit/vendors/antd/css/tabs.scss';
 @import 'components/mixins.scss';
 
-.ant-tabs-bar {
+.ant-tabs-nav .ant-tabs-tab {
+    margin: 0 !important;
+    padding: 8px !important;
     border-bottom: 2px solid $gray-4 !important;
 }
 
-.ant-tabs-nav .ant-tabs-tab {
-    padding-left: 16px !important;
-    padding-right: 16px !important;
-    margin-right: rem(0) !important;
-    border: 1px solid $gray-4;
-    border-top: 0;
+.ant-tabs-left .ant-tabs-nav {
+    min-width: 38px !important;
+    border-right: 2px solid $gray-4 !important;
+}
 
-    &:last-child,
-    &:last-of-type {
-        margin-right: 0 !important;
-        border-right: 2px solid $gray-4 !important;
-    }
+.ant-tabs {
+    line-height: 1 !important;
+}
 
-    &:first-child,
-    &:first-of-type {
-        border-left: none !important;
-    }
+.ant-tabs-tab-btn {
+    font-size: 20px !important;
+}
+
+.ant-tabs-tab,
+.ant-tabs-nav-more,
+.ant-tabs-nav-operations {
+    min-height: 38px !important;
+    max-height: 38px !important;
+    min-width: 44px !important;
+    max-width: 44px !important;
+}
+
+.ant-tabs-nav-operations {
+    border-top: 2px solid $gray-4 !important;
 }

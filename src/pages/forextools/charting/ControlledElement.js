@@ -1,10 +1,14 @@
 import React from 'react'
+import ReactDOM from 'react-dom'
 import { Button, Tabs } from 'antd'
 import { ReflexElement } from 'react-reflex'
-// import style from './style.module.scss'
+import './tabs.scss'
 
 class ControlledElement extends React.Component {
-    state = { maximizing: false }
+    constructor() {
+        super()
+        this.state = { maximizing: false }
+    }
 
     componentWillReceiveProps() {
         const { paneState, threshold } = this.props
@@ -60,12 +64,15 @@ class ControlledElement extends React.Component {
 
     getSize = () => {
         const { orientation } = this.props
+        // eslint-disable-next-line react/no-find-dom-node
+        const domElement = ReactDOM.findDOMNode(this)
+
         switch (orientation) {
             case 'horizontal':
-                return this.domElement.parentElement.offsetHeight
+                return domElement.offsetHeight
 
             case 'vertical':
-                return this.domElement.parentElement.offsetWidth
+                return domElement.offsetWidth
 
             default:
                 return 0
@@ -85,31 +92,46 @@ class ControlledElement extends React.Component {
     }
 
     render() {
-        const { children, maxClass, minClass, tabbedPane, paneState } = this.props
-        // const { size, collapsed } = this.props
+        const {
+            name,
+            children,
+            maxClass,
+            minClass,
+            tabbedPane,
+            paneState,
+            tabPosition,
+            extraContent,
+        } = this.props
         return (
-            <ReflexElement {...this.props} size={paneState.size} style={{ overflow: 'hidden' }}>
-                <div
-                    ref={node => {
-                        this.domElement = node
-                    }}
-                    style={{ height: '100%' }}
-                >
+            <ReflexElement
+                ref={React.createRef().current}
+                {...this.props}
+                size={paneState.size}
+                style={{ overflow: 'hidden' }}
+            >
+                <div id={name} style={{ height: '100%' }}>
                     {tabbedPane && (
                         <Tabs
                             size="small"
-                            tabPosition="top"
+                            tabPosition={tabPosition}
                             style={{ height: '100%' }}
-                            // className={collapsed && style.tabTopBorder}
                             tabBarExtraContent={
-                                <>
-                                    <Button className={minClass} onClick={this.onMinimizeClicked}>
-                                        -
-                                    </Button>
-                                    <Button className={maxClass} onClick={this.onMaximizeClicked}>
-                                        +
-                                    </Button>
-                                </>
+                                extraContent && (
+                                    <>
+                                        <Button
+                                            className={minClass}
+                                            onClick={this.onMinimizeClicked}
+                                        >
+                                            -
+                                        </Button>
+                                        <Button
+                                            className={maxClass}
+                                            onClick={this.onMaximizeClicked}
+                                        >
+                                            +
+                                        </Button>
+                                    </>
+                                )
                             }
                         >
                             {children}
