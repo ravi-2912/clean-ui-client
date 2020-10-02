@@ -9,6 +9,8 @@ import { ReactComponent as LayersSVG } from './svgs/layers.svg'
 import { ReactComponent as RightPaneSVG } from './svgs/rightpane.svg'
 import { ReactComponent as CandlesSVG } from './svgs/charts/candles3.svg'
 import { ReactComponent as HeikinAshiSVG } from './svgs/charts/heikinashi.svg'
+import { ReactComponent as ToolSVG } from './svgs/tool.svg'
+import { ReactComponent as IndicatorSVG } from './svgs/indicator.svg'
 
 import './select.scss'
 import style from './style.module.scss'
@@ -29,31 +31,80 @@ const TobBarContent = () => {
         console.log('click', e)
     }
 
-    const chartMenu = (
-        <Menu onClick={handleMenuClick}>
-            <Menu.Item key="1">
-                <Row>
-                    <Col>
-                        <CandlesSVG />
-                    </Col>
-                    <Col>Candlestick</Col>
-                </Row>
-            </Menu.Item>
-            <Menu.Item key="2">
-                <Row>
-                    <Col>
-                        <HeikinAshiSVG />
-                    </Col>
-                    <Col>Heikin Ashi</Col>
-                </Row>
-            </Menu.Item>
-        </Menu>
-    )
+    const chartMenu = () => {
+        const iconSize = 28
+        const menuHeight = iconSize + 10
+        return (
+            <Menu onClick={handleMenuClick}>
+                <Menu.Item key="1" style={{ height: menuHeight }}>
+                    <CandlesSVG height={iconSize} width={iconSize} className="align-middle" />
+                    <div className="d-inline h100 align-middle ml-3">Candlestick</div>
+                </Menu.Item>
+                <Menu.Item key="2" style={{ height: menuHeight }}>
+                    <HeikinAshiSVG height={iconSize} width={iconSize} className="align-middle" />
+                    <div className="d-inline h100 align-middle ml-3">Heikin Ashi</div>
+                </Menu.Item>
+            </Menu>
+        )
+    }
+
+    const timeMenu = () => {
+        const iconSize = 28
+        const menuHeight = iconSize + 10
+        return (
+            <Menu onClick={handleMenuClick}>
+                <Menu.Item key="1" style={{ height: menuHeight }}>
+                    H1&nbsp;&nbsp; 1 hour
+                    {/* <div className="d-inline h100 align-middle ml-3">Candlestick</div> */}
+                </Menu.Item>
+                <Menu.Item key="2" style={{ height: menuHeight }}>
+                    H2&nbsp;&nbsp; 2 hour
+                    {/* <div className="d-inline h100 align-middle ml-3">Heikin Ashi</div> */}
+                </Menu.Item>
+            </Menu>
+        )
+    }
+
+    const toolMenu = () => {
+        const iconSize = 28
+        const menuHeight = iconSize + 10
+        return (
+            <Menu onClick={handleMenuClick}>
+                <Menu.Item key="1" style={{ height: menuHeight }}>
+                    <SettingsSVG height={iconSize} width={iconSize} className="align-middle" />
+                    <div className="d-inline h100 align-middle ml-3">Settings</div>
+                </Menu.Item>
+                <Menu.Item key="2" style={{ height: menuHeight }}>
+                    <LayersSVG height={iconSize} width={iconSize} className="align-middle" />
+                    <div className="d-inline h100 align-middle ml-3">Layers</div>
+                </Menu.Item>
+                <Menu.Divider />
+                <Menu.Item key="3" style={{ height: menuHeight }}>
+                    <LayersSVG height={iconSize} width={iconSize} className="align-middle" />
+                    <div className="d-inline h100 align-middle ml-3">Layers</div>
+                </Menu.Item>
+            </Menu>
+        )
+    }
 
     return (
         <Row className={style.topbar}>
             <Col style={{ padding: 0, height: '100%' }}>
+                <Dropdown overlay={toolMenu} trigger="click">
+                    <Button
+                        className="d-md-inline-block d-lg-none"
+                        style={{
+                            height: '100%',
+                            borderRadius: 'none',
+                            paddingLeft: 5,
+                            paddingRight: 5,
+                        }}
+                    >
+                        <ToolSVG />
+                    </Button>
+                </Dropdown>
                 <Button
+                    className="d-none d-lg-inline-block"
                     style={{
                         height: '100%',
                         borderRadius: 'none',
@@ -63,7 +114,9 @@ const TobBarContent = () => {
                 >
                     <SettingsSVG />
                 </Button>
+
                 <Button
+                    className="d-none d-lg-inline-block"
                     style={{
                         height: '100%',
                         borderRadius: 'none',
@@ -99,7 +152,44 @@ const TobBarContent = () => {
                         }}
                     >
                         <CandlesSVG />
+                        <DownOutlined className="align-text-top" />
+                    </Button>
+                </Dropdown>
+                <Dropdown overlay={timeMenu} trigger="click">
+                    <Button
+                        style={{
+                            height: '100%',
+                            borderRadius: 'none',
+                            paddingLeft: 5,
+                            paddingRight: 5,
+                            top: -13,
+                        }}
+                    >
+                        &nbsp;&nbsp;
+                        <div
+                            className="d-inline align-top"
+                            style={{
+                                fontSize: 18,
+                                fontFamily: 'Montserrat, Cantarell, sans-serif',
+                            }}
+                        >
+                            1h
+                        </div>
+                        &nbsp;&nbsp;
+                        <DownOutlined className="align-text-bottom" />
+                    </Button>
+                </Dropdown>
 
+                <Dropdown overlay={timeMenu} trigger="click">
+                    <Button
+                        style={{
+                            height: '100%',
+                            borderRadius: 'none',
+                            paddingLeft: 5,
+                            paddingRight: 5,
+                        }}
+                    >
+                        <IndicatorSVG />
                         <DownOutlined className="align-text-top" />
                     </Button>
                 </Dropdown>

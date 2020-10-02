@@ -30,9 +30,7 @@ const Charting = () => {
         <>
             <Container fluid className={style.containerBorder}>
                 <TopBarContent />
-                {/* <Button type="primary" onClick={() => setVisible(true)}>
-                            Open
-                        </Button> */}
+
                 <Row style={{ marginLeft: -16 }}>
                     <Col className={style.chartPane}>
                         <ReflexContainer orientation="horizontal">
