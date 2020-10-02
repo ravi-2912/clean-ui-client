@@ -8,11 +8,13 @@
         overflow: visible !important;
         pointer-events: all;
     }
+
     :global(.ant-drawer-body) {
         padding: 0 !important;
         pointer-events: all;
         height: 100%;
     }
+
     :global(.ant-layout-sider) {
         height: 100%;
     }
@@ -20,9 +22,9 @@
 
 .handler {
     position: fixed;
-    z-index: 1;
+    z-index: 9000;
     left: 0;
-    top: 72px;
+    top: 12px;
     width: 41px;
     height: 40px;
     cursor: pointer;
