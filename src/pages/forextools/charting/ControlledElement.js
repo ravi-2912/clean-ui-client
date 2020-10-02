@@ -2,6 +2,9 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Button, Tabs } from 'antd'
 import { ReflexElement } from 'react-reflex'
+import { ReactComponent as MinimizeSVG } from './svgs/minimize.svg'
+import { ReactComponent as MaximizeSVG } from './svgs/maximize.svg'
+import { ReactComponent as OpenSVG } from './svgs/open.svg'
 import './tabs.scss'
 
 class ControlledElement extends React.Component {
@@ -18,17 +21,45 @@ class ControlledElement extends React.Component {
         }
     }
 
-    onMinimizeClicked = () => {
+    onOpenClicked = (activeTabKey = '0') => {
         const { minSize, paneState, paneSetState } = this.props
+        const prevState = this.state
+        const currentSize = this.getSize()
+        const maxSize = (window.innerHeight - 64 - minSize - 4 - 4) * 0.5
+        const update = size => {
+            return new Promise(resolve => {
+                paneSetState({
+                    ...paneState,
+                    size,
+                    activeTabKey,
+                    collapsed: size <= minSize,
+                })
+                this.setState({ ...prevState, maximizing: size < maxSize })
+                resolve()
+            })
+        }
+
+        const done = (from, to) => {
+            return from > to
+        }
+
+        this.animate(currentSize, maxSize, 40, done, update)
+        // paneSetState({ ...paneState, size: maxSize, collapsed: false })
+    }
+
+    onMinimizeClicked = (activeTabKey = '') => {
+        const { minSize, paneState, paneSetState } = this.props
+        const prevState = this.state
         const currentSize = this.getSize()
         const update = size => {
             return new Promise(resolve => {
                 paneSetState({
                     ...paneState,
-                    collapsed: true,
+                    activeTabKey,
+                    collapsed: size <= minSize,
                     size: size < minSize ? minSize : size,
                 })
-                this.setState({ maximizing: false })
+                this.setState({ ...prevState, maximizing: false })
                 resolve()
             })
         }
@@ -39,8 +70,9 @@ class ControlledElement extends React.Component {
         this.animate(currentSize, minSize, -40, done, update)
     }
 
-    onMaximizeClicked = () => {
+    onMaximizeClicked = (activeTabKey = '0') => {
         const { minSize, paneState, paneSetState } = this.props
+        const prevState = this.state
         const currentSize = this.getSize()
         const maxSize = window.innerHeight - 64 - minSize - 4 - 4
         const update = size => {
@@ -48,9 +80,10 @@ class ControlledElement extends React.Component {
                 paneSetState({
                     ...paneState,
                     size,
-                    collapsed: false,
+                    activeTabKey,
+                    collapsed: size <= minSize,
                 })
-                this.setState({ maximizing: size < maxSize })
+                this.setState({ ...prevState, maximizing: size < maxSize })
                 resolve()
             })
         }
@@ -95,44 +128,50 @@ class ControlledElement extends React.Component {
         const {
             name,
             children,
-            maxClass,
-            minClass,
             tabbedPane,
             paneState,
+            paneSetState,
             tabPosition,
             extraContent,
         } = this.props
+
+        const rightTabBarExtraContent = {
+            right: (
+                <>
+                    <Button
+                        onClick={
+                            paneState.collapsed
+                                ? () => this.onOpenClicked()
+                                : () => this.onMinimizeClicked()
+                        }
+                        icon={paneState.collapsed ? <OpenSVG /> : <MinimizeSVG />}
+                    />
+                    <Button onClick={() => this.onMaximizeClicked()} icon={<MaximizeSVG />} />
+                </>
+            ),
+        }
+
         return (
             <ReflexElement
-                ref={React.createRef().current}
                 {...this.props}
                 size={paneState.size}
                 style={{ overflow: 'hidden' }}
+                className={paneState.collapsed ? 'bottomPaneBorderTop' : ''}
             >
                 <div id={name} style={{ height: '100%' }}>
                     {tabbedPane && (
                         <Tabs
                             size="small"
                             tabPosition={tabPosition}
-                            style={{ height: '100%' }}
-                            tabBarExtraContent={
-                                extraContent && (
-                                    <>
-                                        <Button
-                                            className={minClass}
-                                            onClick={this.onMinimizeClicked}
-                                        >
-                                            -
-                                        </Button>
-                                        <Button
-                                            className={maxClass}
-                                            onClick={this.onMaximizeClicked}
-                                        >
-                                            +
-                                        </Button>
-                                    </>
-                                )
-                            }
+                            style={{
+                                height: '100%',
+                            }}
+                            tabBarExtraContent={extraContent && rightTabBarExtraContent}
+                            activeKey={paneState.activeTabKey}
+                            onTabClick={key => {
+                                if (paneState.collapsed) this.onOpenClicked(key)
+                                paneSetState({ ...paneState, activeTabKey: key })
+                            }}
                         >
                             {children}
                         </Tabs>

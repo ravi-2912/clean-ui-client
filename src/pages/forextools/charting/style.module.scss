@@ -4,6 +4,10 @@
     border-bottom: 2px solid $gray-4;
     height: 39px;
     margin-bottom: 0 !important;
+    padding-left: 1px;
+    padding-right: 1px;
+    margin-left: -16px;
+    margin-right: -16px;
 }
 
 .chartPane {
@@ -45,10 +49,6 @@
         -moz-transition: all 0.05s ease !important;
         -webkit-transition: all 0.05s ease !important;
     }
-}
-
-.tabTopBorder {
-    border-top: 2px solid $gray-4 !important;
 }
 
 .containerBorder {

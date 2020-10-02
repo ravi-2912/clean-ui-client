@@ -10,7 +10,7 @@ import Menu from 'components/cleanui/layout/Menu'
 const mapStateToProps = () => ({
     isContentMaxWidth: false,
     isAppMaxWidth: false,
-    isGrayBackground: true,
+    isGrayBackground: false,
     isSquaredBorders: false,
     isCardShadow: true,
     isBorderless: false,

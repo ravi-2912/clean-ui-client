@@ -1,34 +1,59 @@
-@import 'components/kit/vendors/antd/css/tabs.scss';
 @import 'components/mixins.scss';
+@import 'components/kit/vendors/antd/css/tabs.scss';
 
-.ant-tabs-nav .ant-tabs-tab {
-    margin: 0 !important;
-    padding: 8px !important;
+.ant-tabs-top > .ant-tabs-nav,
+.ant-tabs-bottom > .ant-tabs-nav,
+.ant-tabs-top > div > .ant-tabs-nav,
+.ant-tabs-bottom > div > .ant-tabs-nav {
     border-bottom: 2px solid $gray-4 !important;
+
+    &::before {
+        border-bottom: none !important;
+    }
 }
 
-.ant-tabs-left .ant-tabs-nav {
-    min-width: 38px !important;
-    border-right: 2px solid $gray-4 !important;
+.ant-tabs-nav {
+    .ant-tabs-tab {
+        margin-right: 0 !important;
+        padding: 8px 16px !important;
+        border-right: 1px solid $gray-4 !important;
+        border-left: 1px solid $gray-4 !important;
+
+        &:hover {
+            background: $gray-1 !important;
+        }
+
+        &:nth-last-child(2) {
+            border-right: 2px solid $gray-4 !important;
+        }
+    }
 }
 
-.ant-tabs {
-    line-height: 1 !important;
+.ant-btn-icon-only {
+    height: 28px !important;
+    border-radius: 4px !important;
+    padding-top: 4px !important;
+    border: none !important;
+    background: transparent !important;
+    margin-right: 2px !important;
+
+    &:hover {
+        background: $gray-1 !important;
+    }
 }
 
-.ant-tabs-tab-btn {
-    font-size: 20px !important;
+.ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+    font-weight: bold !important;
 }
 
-.ant-tabs-tab,
-.ant-tabs-nav-more,
+.ant-tabs-tab.ant-tabs-tab-active {
+    background: $gray-1 !important;
+}
+
 .ant-tabs-nav-operations {
-    min-height: 38px !important;
-    max-height: 38px !important;
-    min-width: 44px !important;
-    max-width: 44px !important;
+    border-left: 2px solid $gray-4 !important;
 }
 
-.ant-tabs-nav-operations {
+.bottomPaneBorderTop {
     border-top: 2px solid $gray-4 !important;
 }
