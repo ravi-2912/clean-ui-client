@@ -1,3 +1,4 @@
+/* eslint-disable react/destructuring-assignment */
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Button, Tabs } from 'antd'
@@ -8,16 +9,26 @@ import { ReactComponent as OpenSVG } from './svgs/open.svg'
 import './tabs.scss'
 
 class ControlledElement extends React.Component {
+    movement = 50
+
     constructor() {
         super()
         this.state = { maximizing: false }
     }
 
-    componentWillReceiveProps() {
-        const { paneState, threshold } = this.props
+    // eslint-disable-next-line no-unused-vars
+    componentWillReceiveProps(nextProps) {
+        // eslint-disable-next-line no-unused-vars
+        const { paneState, threshold, paneSetState } = this.props
         const { maximizing } = this.state
         if (!maximizing && !paneState.collapsed && this.getSize() < threshold) {
-            this.onMinimizeClicked()
+            // this.onMinimizeClicked()
+            paneSetState({
+                ...paneState,
+                size: paneState.minSize,
+                activeTabKey: '',
+                collapsed: true,
+            })
         }
     }
 
@@ -43,8 +54,7 @@ class ControlledElement extends React.Component {
             return from > to
         }
 
-        this.animate(currentSize, maxSize, 40, done, update)
-        // paneSetState({ ...paneState, size: maxSize, collapsed: false })
+        this.animate(currentSize, maxSize, this.movement, done, update)
     }
 
     onMinimizeClicked = (activeTabKey = '') => {
@@ -59,7 +69,10 @@ class ControlledElement extends React.Component {
                     collapsed: size <= minSize,
                     size: size < minSize ? minSize : size,
                 })
-                this.setState({ ...prevState, maximizing: false })
+                this.setState({
+                    ...prevState,
+                    maximizing: false,
+                })
                 resolve()
             })
         }
@@ -67,7 +80,7 @@ class ControlledElement extends React.Component {
             return from < to
         }
 
-        this.animate(currentSize, minSize, -40, done, update)
+        this.animate(currentSize, minSize, -this.movement, done, update)
     }
 
     onMaximizeClicked = (activeTabKey = '0') => {
@@ -92,7 +105,7 @@ class ControlledElement extends React.Component {
             return from > to
         }
 
-        this.animate(currentSize, maxSize, 40, done, update)
+        this.animate(currentSize, maxSize, this.movement, done, update)
     }
 
     getSize = () => {
@@ -116,7 +129,7 @@ class ControlledElement extends React.Component {
         const stepFn = () => {
             if (!done(from, to)) {
                 fn((from += step)).then(() => {
-                    setTimeout(stepFn, 1)
+                    return setTimeout(stepFn, 1)
                 })
             }
         }
@@ -133,7 +146,9 @@ class ControlledElement extends React.Component {
             paneSetState,
             tabPosition,
             extraContent,
+            // onOpenClicked,
         } = this.props
+        // console.log('PROPS', onOpenClicked, this.props)
 
         const rightTabBarExtraContent = {
             right: (
@@ -156,15 +171,16 @@ class ControlledElement extends React.Component {
                 {...this.props}
                 size={paneState.size}
                 style={{ overflow: 'hidden' }}
-                className={paneState.collapsed ? 'bottomPaneBorderTop' : ''}
+                className={paneState.collapsed && paneState.borderTop ? 'bottomPaneBorderTop' : ''}
             >
-                <div id={name} style={{ height: '100%' }}>
+                <div id={name} style={{ height: '100%', width: '100%' }}>
                     {tabbedPane && (
                         <Tabs
                             size="small"
                             tabPosition={tabPosition}
                             style={{
                                 height: '100%',
+                                width: '100%',
                             }}
                             tabBarExtraContent={extraContent && rightTabBarExtraContent}
                             activeKey={paneState.activeTabKey}

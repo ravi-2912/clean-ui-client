@@ -3,19 +3,21 @@ import React from 'react'
 // import { Col, Row, Menu, Button, Select, Dropdown, message } from 'antd'
 import { Row, Col } from 'reactstrap'
 import { Button, Select, Dropdown, Menu, message } from 'antd'
-import { DownOutlined } from '@ant-design/icons'
 import { ReactComponent as SettingsSVG } from './svgs/settings.svg'
 import { ReactComponent as LayersSVG } from './svgs/layers.svg'
 import { ReactComponent as RightPaneSVG } from './svgs/rightpane.svg'
-import { ReactComponent as CandlesSVG } from './svgs/charts/candles3.svg'
+import { ReactComponent as CandlesSVG } from './svgs/charts/candles1.svg'
 import { ReactComponent as HeikinAshiSVG } from './svgs/charts/heikinashi.svg'
 import { ReactComponent as ToolSVG } from './svgs/tool.svg'
 import { ReactComponent as IndicatorSVG } from './svgs/indicator.svg'
+import { ReactComponent as PencilSVG } from './svgs/pencil.svg'
+import { ReactComponent as CaratSVG } from './svgs/carat.svg'
 
 import './select.scss'
 import style from './style.module.scss'
 
-const TobBarContent = () => {
+const TobBarContent = props => {
+    const { breakpoint } = props
     const { Option } = Select
     const children = []
     for (let i = 10; i < 36; i += 1) {
@@ -65,23 +67,25 @@ const TobBarContent = () => {
         )
     }
 
+    const { rightPane, leftPane } = props
+
     const toolMenu = () => {
         const iconSize = 28
         const menuHeight = iconSize + 10
         return (
             <Menu onClick={handleMenuClick}>
-                <Menu.Item key="1" style={{ height: menuHeight }}>
+                <Menu.Item key="1" style={{ height: menuHeight }} onClick={leftPane}>
                     <SettingsSVG height={iconSize} width={iconSize} className="align-middle" />
                     <div className="d-inline h100 align-middle ml-3">Settings</div>
                 </Menu.Item>
-                <Menu.Item key="2" style={{ height: menuHeight }}>
+                <Menu.Item key="2" style={{ height: menuHeight }} onClick={leftPane}>
                     <LayersSVG height={iconSize} width={iconSize} className="align-middle" />
                     <div className="d-inline h100 align-middle ml-3">Layers</div>
                 </Menu.Item>
                 <Menu.Divider />
-                <Menu.Item key="3" style={{ height: menuHeight }}>
-                    <LayersSVG height={iconSize} width={iconSize} className="align-middle" />
-                    <div className="d-inline h100 align-middle ml-3">Layers</div>
+                <Menu.Item key="3" style={{ height: menuHeight }} onClick={leftPane}>
+                    <PencilSVG height={iconSize} width={iconSize} className="align-middle" />
+                    <div className="d-inline h100 align-middle ml-3">Drawings</div>
                 </Menu.Item>
             </Menu>
         )
@@ -101,6 +105,12 @@ const TobBarContent = () => {
                         }}
                     >
                         <ToolSVG />
+                        {window.innerWidth > breakpoint && (
+                            <>
+                                &nbsp;
+                                <CaratSVG height={28} />
+                            </>
+                        )}
                     </Button>
                 </Dropdown>
                 <Button
@@ -111,6 +121,7 @@ const TobBarContent = () => {
                         paddingLeft: 5,
                         paddingRight: 5,
                     }}
+                    onClick={leftPane}
                 >
                     <SettingsSVG />
                 </Button>
@@ -123,6 +134,7 @@ const TobBarContent = () => {
                         paddingLeft: 5,
                         paddingRight: 5,
                     }}
+                    onClick={leftPane}
                 >
                     <LayersSVG />
                 </Button>
@@ -152,7 +164,12 @@ const TobBarContent = () => {
                         }}
                     >
                         <CandlesSVG />
-                        <DownOutlined className="align-text-top" />
+                        {window.innerWidth > breakpoint && (
+                            <>
+                                &nbsp;
+                                <CaratSVG height={28} />
+                            </>
+                        )}
                     </Button>
                 </Dropdown>
                 <Dropdown overlay={timeMenu} trigger="click">
@@ -162,10 +179,9 @@ const TobBarContent = () => {
                             borderRadius: 'none',
                             paddingLeft: 5,
                             paddingRight: 5,
-                            top: -13,
+                            top: window.innerWidth > breakpoint ? 0 : -13,
                         }}
                     >
-                        &nbsp;&nbsp;
                         <div
                             className="d-inline align-top"
                             style={{
@@ -173,10 +189,9 @@ const TobBarContent = () => {
                                 fontFamily: 'Montserrat, Cantarell, sans-serif',
                             }}
                         >
-                            1h
+                            &nbsp;H1&nbsp;
                         </div>
-                        &nbsp;&nbsp;
-                        <DownOutlined className="align-text-bottom" />
+                        {window.innerWidth > breakpoint && <CaratSVG height={28} />}
                     </Button>
                 </Dropdown>
 
@@ -187,10 +202,12 @@ const TobBarContent = () => {
                             borderRadius: 'none',
                             paddingLeft: 5,
                             paddingRight: 5,
+                            alignItems: 'center',
                         }}
                     >
                         <IndicatorSVG />
-                        <DownOutlined className="align-text-top" />
+                        &nbsp;
+                        <CaratSVG height={28} />
                     </Button>
                 </Dropdown>
 
@@ -202,6 +219,7 @@ const TobBarContent = () => {
                         paddingLeft: 5,
                         paddingRight: 5,
                     }}
+                    onClick={rightPane}
                 >
                     <RightPaneSVG />
                 </Button>
