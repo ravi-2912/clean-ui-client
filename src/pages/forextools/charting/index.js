@@ -10,6 +10,7 @@ import TopBarContent from './TopBarContent'
 import style from './style.module.scss'
 
 const Charting = () => {
+    const rightElement = React.createRef()
     const breakpoint = 768
     const [dimensions, setDimensions] = React.useState({
         height: window.innerHeight,
@@ -98,29 +99,37 @@ const Charting = () => {
         }
     })
 
-    const onControlledElementOpenClicked = (controlledElement, activeTabKey = '0') => {
-        const { minSize, paneState, paneSetState } = controlledElement.props
-        const prevState = controlledElement.state
-        const currentSize = controlledElement.getSize()
-        const maxSize = (window.innerHeight - 64 - minSize - 4 - 4) * 0.5
+    const onVerticalPaneOpenClicked = (paneState, paneSetState) => {
+        const { minSize } = paneState
+        const maxSize = 500
         const update = size => {
             return new Promise(resolve => {
                 paneSetState({
                     ...paneState,
                     size,
-                    activeTabKey,
                     collapsed: size <= minSize,
                 })
-                controlledElement.setState({ ...prevState, maximizing: size < maxSize })
                 resolve()
             })
         }
 
-        const done = (from, to) => {
+        const doneFn = (from, to) => {
             return from > to
         }
 
-        controlledElement.animate(currentSize, maxSize, controlledElement.movement, done, update)
+        const animate = (from, to, step, done, fn) => {
+            const stepFn = () => {
+                if (!done(from, to)) {
+                    fn((from += step)).then(() => {
+                        return setTimeout(stepFn, 1)
+                    })
+                }
+            }
+
+            stepFn()
+        }
+
+        animate(rightPaneState.size, maxSize, 40, doneFn, update)
     }
 
     return (
@@ -130,15 +139,14 @@ const Charting = () => {
                     rightPane={() =>
                         window.innerWidth > breakpoint
                             ? rightPaneState.collapsed &&
-                              setRightPaneState({ ...rightPaneState, collapsed: false, size: 500 })
-                            : //   onControlledElementOpenClicked(RightControlledElement)
-                              setVisibleRightDrawer(true)
+                              onVerticalPaneOpenClicked(rightPaneState, setRightPaneState)
+                            : setVisibleRightDrawer(true)
                     }
                     breakpoint={breakpoint}
                     leftPane={() =>
                         window.innerWidth > breakpoint
                             ? leftPaneState.collapsed &&
-                              setLeftPaneState({ ...leftPaneState, collapsed: false, size: 500 })
+                              onVerticalPaneOpenClicked(leftPaneState, setLeftPaneState)
                             : setVisibleLeftDrawer(true)
                     }
                 />
@@ -195,6 +203,7 @@ const Charting = () => {
                                     {window.innerWidth > breakpoint &&
                                         !rightPaneState.collapsed && (
                                             <ControlledElement
+                                                ref={rightElement}
                                                 {...rightPaneState}
                                                 paneState={rightPaneState}
                                                 paneSetState={setRightPaneState}
@@ -207,9 +216,6 @@ const Charting = () => {
                                 className={`${
                                     style.splitterHorizontal
                                 } ${bottomPaneState.collapsed && 'd-none'}`}
-                                // onResize={() =>
-                                //     setBottomPaneState({ ...bottomPaneState, collapsed: false })
-                                // }
                             />
 
                             <ControlledElement
