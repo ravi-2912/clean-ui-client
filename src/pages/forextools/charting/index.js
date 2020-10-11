@@ -1,16 +1,20 @@
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react'
 import { ReflexContainer, ReflexSplitter, ReflexElement } from 'react-reflex'
-import { Drawer, Tabs } from 'antd'
-import { Container, Row, Col } from 'reactstrap'
+import { Drawer } from 'antd'
+import { Tab, TabList, TabPanel } from 'react-tabs'
+import 'react-tabs/style/react-tabs.css'
+import { Container, Row, Col, Button, ToggleButton } from 'react-bootstrap'
+import classNames from 'classnames'
 import ControlledElement from './ControlledElement'
-// import CollapsedPane from './CollapsedPane'
 import 'react-reflex/styles.css'
 import TopBarContent from './TopBarContent'
+import { ReactComponent as MinimizeSVG } from './svgs/minimize.svg'
+import { ReactComponent as MaximizeSVG } from './svgs/maximize.svg'
+import { ReactComponent as OpenSVG } from './svgs/open.svg'
 import style from './style.module.scss'
 
 const Charting = () => {
-    const rightElement = React.createRef()
     const breakpoint = 768
     const [dimensions, setDimensions] = React.useState({
         height: window.innerHeight,
@@ -23,8 +27,8 @@ const Charting = () => {
     const [bottomPaneState, setBottomPaneState] = useState({
         id: 'bottom-pane',
         name: 'bottom-pane',
-        size: 38,
-        minSize: 38,
+        size: 37,
+        minSize: 37,
         direction: -1,
         threshold: 100,
         collapsed: true,
@@ -35,6 +39,7 @@ const Charting = () => {
         resizing: false,
         activeTabKey: '',
         borderTop: true,
+        maximizing: false,
     })
 
     const [rightPaneState, setRightPaneState] = useState({
@@ -42,6 +47,7 @@ const Charting = () => {
         name: 'right-pane',
         size: 0,
         minSize: 0,
+        maxSize: 600,
         direction: -1,
         threshold: 100,
         collapsed: true,
@@ -59,6 +65,7 @@ const Charting = () => {
         name: 'left-pane',
         size: 0,
         minSize: 0,
+        maxSize: 400,
         direction: 1,
         threshold: 100,
         collapsed: true,
@@ -99,56 +106,109 @@ const Charting = () => {
         }
     })
 
-    const onVerticalPaneOpenClicked = (paneState, paneSetState) => {
+    const animate = (from, to, step, done, fn) => {
+        const stepFn = () => {
+            if (!done(from, to)) {
+                fn((from += step)).then(() => {
+                    return setTimeout(stepFn, 1)
+                })
+            }
+        }
+
+        stepFn()
+    }
+
+    const onPaneOpenClicked = (paneState, paneSetState, activeTabKey = 0) => {
         const { minSize } = paneState
-        const maxSize = 500
+        const maxSize = paneState.maxSize
+            ? paneState.maxSize
+            : (window.innerHeight - 64 - minSize - 4 - 4) * 0.5
         const update = size => {
             return new Promise(resolve => {
                 paneSetState({
                     ...paneState,
                     size,
+                    activeTabKey,
                     collapsed: size <= minSize,
+                    maximizing: size < maxSize,
                 })
                 resolve()
             })
         }
 
-        const doneFn = (from, to) => {
+        const done = (from, to) => {
             return from > to
         }
 
-        const animate = (from, to, step, done, fn) => {
-            const stepFn = () => {
-                if (!done(from, to)) {
-                    fn((from += step)).then(() => {
-                        return setTimeout(stepFn, 1)
-                    })
-                }
-            }
+        animate(paneState.size, maxSize, 40, done, update)
+    }
 
-            stepFn()
+    const onPaneMinimizeClicked = (paneState, paneSetState, activeTabKey = '') => {
+        const { minSize } = paneState
+
+        const update = size => {
+            return new Promise(resolve => {
+                paneSetState({
+                    ...paneState,
+                    activeTabKey,
+                    collapsed: size <= minSize,
+                    size: size < minSize ? minSize : size,
+                    maximizing: false,
+                })
+                resolve()
+            })
+        }
+        const done = (from, to) => {
+            return from < to
         }
 
-        animate(rightPaneState.size, maxSize, 40, doneFn, update)
+        animate(paneState.size, minSize, -40, done, update)
+    }
+
+    const onPaneMaximizeClicked = (paneState, paneSetState, activeTabKey = 0) => {
+        const { minSize } = paneState
+        const maxSize = window.innerHeight - 64 - minSize - 4 - 4
+        const update = size => {
+            return new Promise(resolve => {
+                paneSetState({
+                    ...paneState,
+                    size,
+                    activeTabKey,
+                    collapsed: size <= minSize,
+                    maximizing: size < maxSize,
+                })
+                resolve()
+            })
+        }
+
+        const done = (from, to) => {
+            return from > to
+        }
+
+        animate(paneState.size, maxSize, 40, done, update)
     }
 
     return (
         <>
             <Container fluid className={style.containerBorder}>
                 <TopBarContent
-                    rightPane={() =>
+                    breakpoint={breakpoint}
+                    rightPaneOpen={() =>
                         window.innerWidth > breakpoint
                             ? rightPaneState.collapsed &&
-                              onVerticalPaneOpenClicked(rightPaneState, setRightPaneState)
+                              onPaneOpenClicked(rightPaneState, setRightPaneState)
                             : setVisibleRightDrawer(true)
                     }
-                    breakpoint={breakpoint}
-                    leftPane={() =>
+                    rightPaneClose={() => onPaneMinimizeClicked(rightPaneState, setRightPaneState)}
+                    rightPaneCollapsed={rightPaneState.collapsed}
+                    leftPaneOpen={() =>
                         window.innerWidth > breakpoint
                             ? leftPaneState.collapsed &&
-                              onVerticalPaneOpenClicked(leftPaneState, setLeftPaneState)
+                              onPaneOpenClicked(leftPaneState, setLeftPaneState)
                             : setVisibleLeftDrawer(true)
                     }
+                    leftPaneClose={() => onPaneMinimizeClicked(leftPaneState, setLeftPaneState)}
+                    leftPaneCollapsed={leftPaneState.collapsed}
                 />
 
                 <Row style={{ marginLeft: -16 }}>
@@ -203,7 +263,6 @@ const Charting = () => {
                                     {window.innerWidth > breakpoint &&
                                         !rightPaneState.collapsed && (
                                             <ControlledElement
-                                                ref={rightElement}
                                                 {...rightPaneState}
                                                 paneState={rightPaneState}
                                                 paneSetState={setRightPaneState}
@@ -216,18 +275,119 @@ const Charting = () => {
                                 className={`${
                                     style.splitterHorizontal
                                 } ${bottomPaneState.collapsed && 'd-none'}`}
+                                onStartResize={({ domElement }) => {
+                                    console.log(bottomPaneState.size, domElement.offsetTop)
+
+                                    setBottomPaneState({
+                                        ...bottomPaneState,
+                                        offsetTop: domElement.offsetTop,
+                                    })
+                                }}
+                                onStopResize={({ domElement, component }) => {
+                                    const { offsetTop, size } = bottomPaneState
+                                    const newOffsetTop = domElement.offsetTop
+                                    console.log(
+                                        size,
+                                        offsetTop,
+                                        newOffsetTop,
+                                        size - newOffsetTop + offsetTop,
+                                    )
+                                    if (!bottomPaneState.collapsed)
+                                        setBottomPaneState({
+                                            ...bottomPaneState,
+                                            size: size - newOffsetTop + offsetTop,
+                                        })
+                                }}
                             />
 
                             <ControlledElement
                                 {...bottomPaneState}
                                 paneState={bottomPaneState}
                                 paneSetState={setBottomPaneState}
+                                onOpenClicked={() =>
+                                    onPaneOpenClicked(bottomPaneState, setBottomPaneState)
+                                }
                             >
-                                {[...Array(10).keys()].map(i => (
-                                    <Tabs.TabPane key={i} tab={`Tab ${i}`}>
-                                        Contents of Tab {i}
-                                    </Tabs.TabPane>
-                                ))}
+                                <TabList
+                                    className={
+                                        bottomPaneState.collapsed
+                                            ? classNames(style.bottomTabListCollapsed)
+                                            : classNames(style.bottomTabListOpened)
+                                    }
+                                >
+                                    <Tab
+                                        className={classNames(style.bottomTab)}
+                                        selectedClassName={
+                                            !bottomPaneState.collapsed
+                                                ? classNames(style.bottomTabSelected)
+                                                : ''
+                                        }
+                                    >
+                                        Title 1
+                                    </Tab>
+                                    <Tab
+                                        className={classNames(style.bottomTab)}
+                                        selectedClassName={
+                                            !bottomPaneState.collapsed
+                                                ? classNames(style.bottomTabSelected)
+                                                : ''
+                                        }
+                                    >
+                                        Title 2
+                                    </Tab>
+                                    <Tab
+                                        className={classNames(
+                                            style.bottomTabExtraContent,
+                                            'float-right',
+                                        )}
+                                        tabIndex="-1"
+                                        disabled
+                                    >
+                                        <ToggleButton
+                                            className={style.bottomTabExtraContentBtn}
+                                            variant="outline-light"
+                                            onClick={
+                                                bottomPaneState.collapsed
+                                                    ? () =>
+                                                          onPaneOpenClicked(
+                                                              bottomPaneState,
+                                                              setBottomPaneState,
+                                                          )
+                                                    : () =>
+                                                          onPaneMinimizeClicked(
+                                                              bottomPaneState,
+                                                              setBottomPaneState,
+                                                          )
+                                            }
+                                        >
+                                            {bottomPaneState.collapsed ? (
+                                                <OpenSVG />
+                                            ) : (
+                                                <MinimizeSVG />
+                                            )}
+                                        </ToggleButton>
+                                        <ToggleButton
+                                            className={classNames(style.bottomTabExtraContentBtn)}
+                                            variant="outline-light"
+                                            onClick={() =>
+                                                onPaneMaximizeClicked(
+                                                    bottomPaneState,
+                                                    setBottomPaneState,
+                                                )
+                                            }
+                                        >
+                                            <MaximizeSVG />
+                                        </ToggleButton>
+                                    </Tab>
+                                </TabList>
+
+                                <TabPanel>
+                                    <h2>Any content 1</h2>
+                                </TabPanel>
+                                <TabPanel>
+                                    <h2>Any content 2</h2>
+                                </TabPanel>
+                                <TabPanel />
                             </ControlledElement>
                         </ReflexContainer>
                     </Col>

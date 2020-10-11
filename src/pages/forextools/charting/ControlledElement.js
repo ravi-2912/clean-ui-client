@@ -1,28 +1,18 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/destructuring-assignment */
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { Button, Tabs } from 'antd'
+import { Tabs } from 'react-tabs'
+import 'react-tabs/style/react-tabs.css'
+import { Button } from 'antd'
 import { ReflexElement } from 'react-reflex'
-import { ReactComponent as MinimizeSVG } from './svgs/minimize.svg'
-import { ReactComponent as MaximizeSVG } from './svgs/maximize.svg'
-import { ReactComponent as OpenSVG } from './svgs/open.svg'
-import './tabs.scss'
 
 class ControlledElement extends React.Component {
-    movement = 50
-
-    constructor() {
-        super()
-        this.state = { maximizing: false }
-    }
-
-    // eslint-disable-next-line no-unused-vars
-    componentWillReceiveProps(nextProps) {
+    componentWillReceiveProps() {
         // eslint-disable-next-line no-unused-vars
         const { paneState, threshold, paneSetState } = this.props
-        const { maximizing } = this.state
-        if (!maximizing && !paneState.collapsed && this.getSize() < threshold) {
-            // this.onMinimizeClicked()
+
+        if (!paneState.maximizing && !paneState.collapsed && this.getSize() < threshold) {
             paneSetState({
                 ...paneState,
                 size: paneState.minSize,
@@ -30,82 +20,6 @@ class ControlledElement extends React.Component {
                 collapsed: true,
             })
         }
-    }
-
-    onOpenClicked = (activeTabKey = '0') => {
-        const { minSize, paneState, paneSetState } = this.props
-        const prevState = this.state
-        const currentSize = this.getSize()
-        const maxSize = (window.innerHeight - 64 - minSize - 4 - 4) * 0.5
-        const update = size => {
-            return new Promise(resolve => {
-                paneSetState({
-                    ...paneState,
-                    size,
-                    activeTabKey,
-                    collapsed: size <= minSize,
-                })
-                this.setState({ ...prevState, maximizing: size < maxSize })
-                resolve()
-            })
-        }
-
-        const done = (from, to) => {
-            return from > to
-        }
-
-        this.animate(currentSize, maxSize, this.movement, done, update)
-    }
-
-    onMinimizeClicked = (activeTabKey = '') => {
-        const { minSize, paneState, paneSetState } = this.props
-        const prevState = this.state
-        const currentSize = this.getSize()
-        const update = size => {
-            return new Promise(resolve => {
-                paneSetState({
-                    ...paneState,
-                    activeTabKey,
-                    collapsed: size <= minSize,
-                    size: size < minSize ? minSize : size,
-                })
-                this.setState({
-                    ...prevState,
-                    maximizing: false,
-                })
-                resolve()
-            })
-        }
-        const done = (from, to) => {
-            return from < to
-        }
-
-        this.animate(currentSize, minSize, -this.movement, done, update)
-    }
-
-    onMaximizeClicked = (activeTabKey = '0') => {
-        const { minSize, paneState, paneSetState } = this.props
-        const prevState = this.state
-        const currentSize = this.getSize()
-        const maxSize = window.innerHeight - 64 - minSize - 4 - 4
-        const update = size => {
-            return new Promise(resolve => {
-                paneSetState({
-                    ...paneState,
-                    size,
-                    activeTabKey,
-                    collapsed: size <= minSize,
-                })
-                this.setState({ ...prevState, maximizing: size < maxSize })
-                resolve()
-            })
-        }
-
-        const done = (from, to) => {
-            return from > to
-        }
-
-        this.animate(currentSize, maxSize, this.movement, done, update)
     }
 
     getSize = () => {
@@ -138,33 +52,7 @@ class ControlledElement extends React.Component {
     }
 
     render() {
-        const {
-            name,
-            children,
-            tabbedPane,
-            paneState,
-            paneSetState,
-            tabPosition,
-            extraContent,
-            // onOpenClicked,
-        } = this.props
-        // console.log('PROPS', onOpenClicked, this.props)
-
-        const rightTabBarExtraContent = {
-            right: (
-                <>
-                    <Button
-                        onClick={
-                            paneState.collapsed
-                                ? () => this.onOpenClicked()
-                                : () => this.onMinimizeClicked()
-                        }
-                        icon={paneState.collapsed ? <OpenSVG /> : <MinimizeSVG />}
-                    />
-                    <Button onClick={() => this.onMaximizeClicked()} icon={<MaximizeSVG />} />
-                </>
-            ),
-        }
+        const { name, children, tabbedPane, paneState, paneSetState, onOpenClicked } = this.props
 
         return (
             <ReflexElement
@@ -176,18 +64,12 @@ class ControlledElement extends React.Component {
                 <div id={name} style={{ height: '100%', width: '100%' }}>
                     {tabbedPane && (
                         <Tabs
-                            size="small"
-                            tabPosition={tabPosition}
-                            style={{
-                                height: '100%',
-                                width: '100%',
-                            }}
-                            tabBarExtraContent={extraContent && rightTabBarExtraContent}
-                            activeKey={paneState.activeTabKey}
-                            onTabClick={key => {
-                                if (paneState.collapsed) this.onOpenClicked(key)
+                            onSelect={key => {
+                                console.log(key)
+                                if (paneState.collapsed) onOpenClicked(key)
                                 paneSetState({ ...paneState, activeTabKey: key })
                             }}
+                            selectedIndex={parseInt(paneState.activeTabKey, 10)}
                         >
                             {children}
                         </Tabs>

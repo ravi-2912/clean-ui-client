@@ -1,4 +1,5 @@
 @import 'components/mixins.scss';
+@import 'react-tabs/style/react-tabs.scss';
 
 .topbar {
     border-bottom: 2px solid $gray-4;
@@ -8,6 +9,27 @@
     padding-right: 1px;
     margin-left: -16px;
     margin-right: -16px;
+}
+
+.topbarBtn {
+    height: 37px;
+    border-radius: 0;
+    padding: 4px 5px 5px 5px;
+    margin: 0;
+    background: transparent !important;
+    color: $gray-6 !important;
+    border: none;
+}
+
+.topbarDropDownMenu {
+    color: $gray-6 !important;
+}
+
+.topbarDropDownMenuItem {
+    &:hover {
+        color: $gray-6 !important;
+        background: $gray-3 !important;
+    }
 }
 
 .chartPane {
@@ -53,4 +75,82 @@
 
 .containerBorder {
     border: 2px solid $gray-4 !important;
+}
+
+.bottomTabListCollapsed {
+    border-top: 2px solid $gray-4 !important;
+    padding: 0 !important;
+    position: relative;
+}
+
+.bottomTabListOpened {
+    padding: 0 !important;
+    border-bottom: 2px solid $gray-4 !important;
+    position: relative;
+    top: -2px;
+}
+
+.bottomTab {
+    display: inline-block;
+    border-bottom: none;
+    list-style: none;
+    padding: 7px 12px 6px 12px;
+    cursor: pointer;
+    border-radius: 0;
+    border-right: 2px solid $gray-4;
+    position: relative;
+    // top:2px;
+
+    &:first-child,
+    &:first-of-type {
+        margin-left: 1px;
+    }
+}
+
+.bottomTabSelected {
+    position: relative;
+    top: 2px;
+    color: $gray-6;
+    font-weight: bold;
+    border-bottom: none !important;
+    background: white;
+
+    &:focus {
+        box-shadow: 0;
+        outline: none;
+    }
+
+    &:before {
+        content: '';
+        position: absolute;
+        height: 3px;
+        left: 0;
+        right: 0;
+        top: 0;
+        background: $gray-6;
+    }
+}
+
+.bottomTabExtraContent {
+    display: inline-block;
+    border-bottom: none;
+    list-style: none;
+    cursor: pointer;
+    border-radius: 0;
+    position: relative;
+
+    &:focus {
+        box-shadow: 0;
+        outline: none;
+    }
+}
+
+.bottomTabExtraContentBtn {
+    height: 35px;
+    border-radius: 0;
+    padding: 10px;
+    margin: 0;
+    background: transparent !important;
+    color: $gray-6 !important;
+    border: none;
 }

@@ -1,7 +1,8 @@
 @import 'components/mixins.scss';
 
 .topbar {
-    padding: 0 rem(30);
+    padding: 0;
+    padding-left: 20px;
 
     min-height: 64px;
     height: 64px;
@@ -12,8 +13,7 @@
     flex-wrap: nowrap;
     align-items: center;
 
-    @media (max-width: $sm-max-width) {
-        padding: 0 rem(16);
+    @media (max-width: $md-max-width) {
         padding-left: 50px;
     }
 }
