@@ -1,15 +1,10 @@
-### Clean UI Pro React (Create-React-App) Admin Template Preview ###
-https://react.cleanui.cloud
+Made the following adjustments to React-Reflex in `dist\es\ReactContainer.js` in function `_definePropert(this, "onStopResize", data => {})` from lines 89.
 
-### Documentation ###
-Please read documentation here https://docs.sellpixels.com
-
-### Quick Start ###
-* Install node.js: https://nodejs.org​
-* Install yarn package manager: https://yarnpkg.com/​
-* Install node modules by running terminal command `yarn install`
-* Run the app `yarn start`
-* Or build production app `yarn build`
-
-### Support ###
-Use GitHub Issues for tracking bugs and creating new feature requests or write to [support@sellpixels.com](mailto:support@sellpixels.com).
+```javascript
+let thisElements = this.elements
+if(thisElements === null)
+    thisElements = [this.children[data.index - 1], this.children[data.index + 1]];
+const resizedRefs = thisElements.map(element => {
+    return element.ref;
+});
+```
