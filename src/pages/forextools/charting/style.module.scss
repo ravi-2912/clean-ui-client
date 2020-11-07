@@ -19,6 +19,23 @@
     background: transparent !important;
     color: $gray-6 !important;
     border: none;
+    fill: $gray-5;
+    &:hover,
+    &:focus {
+        .svgFill {
+            fill: $gray-6;
+            // transform: translate(-50%) translateY(-10%) rotate(90deg);
+            // transition: transform 0.1s linear;
+        }
+    }
+
+    // &:focus, &:active {
+    //     .svgFill{
+    //         fill: $gray-6;
+    //         transform: translate(50%) translateY(-10%) rotate(-90deg);
+    //         transition: transform 0.1s linear;
+    //     }
+    // }
 }
 
 .topbarDropDownMenu {
@@ -26,9 +43,25 @@
 }
 
 .topbarDropDownMenuItem {
+    color: $gray-6 !important;
     &:hover {
         color: $gray-6 !important;
         background: $gray-3 !important;
+    }
+}
+
+.topBarDropDownMenuAsSubMenu {
+    width: 100% !important;
+    clear: both !important;
+    text-align: inherit !important;
+    white-space: nowrap !important;
+    padding: 0.2rem 1rem !important;
+    color: $gray-6 !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    font-weight: 400 !important;
+    &:focus {
+        color: $gray-6 !important;
     }
 }
 
@@ -153,4 +186,15 @@
     background: transparent !important;
     color: $gray-6 !important;
     border: none;
+}
+
+.noCarat {
+    &::after,
+    &::before {
+        display: none !important;
+    }
+}
+
+.svgFill {
+    fill: $gray-6 !important;
 }
