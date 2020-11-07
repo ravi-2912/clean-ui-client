@@ -9,6 +9,7 @@ import classNames from 'classnames'
 import ControlledElement from './ControlledElement'
 import 'react-reflex/styles.css'
 import TopBarContent from './TopBarContent'
+import LeftBarContent from './LeftBarContent'
 import { ReactComponent as MinimizeSVG } from './svgs/minimize.svg'
 import { ReactComponent as MaximizeSVG } from './svgs/maximize.svg'
 import { ReactComponent as OpenSVG } from './svgs/open.svg'
@@ -220,12 +221,13 @@ const Charting = () => {
                                         <ReflexElement
                                             minSize={50}
                                             maxSize={50}
+                                            size={50}
                                             style={{
                                                 overflow: 'hidden',
                                                 borderRight: '2px solid red',
                                             }}
                                         >
-                                            <div>D</div>
+                                            <LeftBarContent />
                                         </ReflexElement>
                                     )}
                                     {window.innerWidth > breakpoint && !leftPaneState.collapsed && (
