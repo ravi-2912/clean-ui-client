@@ -11,6 +11,12 @@ import { ReactComponent as ArrowSVG } from './svgs/cursors/arrow.svg'
 import { ReactComponent as ArrowToolSVG } from './svgs/cursors/arrow-tooltip.svg'
 import { ReactComponent as EraserSVG } from './svgs/cursors/eraser.svg'
 import { ReactComponent as MeasureSVG } from './svgs/cursors/measure2.svg'
+import { ReactComponent as LineArrowSVG } from './svgs/lines/arrow.svg'
+import { ReactComponent as LineSVG } from './svgs/lines/line.svg'
+import { ReactComponent as LineHorizontalSVG } from './svgs/lines/horizontal-line.svg'
+import { ReactComponent as LineHorizontalRaySVG } from './svgs/lines/horizontal-ray.svg'
+import { ReactComponent as LineVerticalSVG } from './svgs/lines/vertical-line.svg'
+import { ReactComponent as LineParallelChannelSVG } from './svgs/lines/parallel-channel.svg'
 
 export const granularities = {
     M1: { text: '1 minute' },
@@ -28,8 +34,6 @@ export const granularities = {
     W: { text: 'Weekly' },
     MN: { text: 'Monthly' },
 }
-
-// height={22} width={22} className="align-middle"
 
 export const chartTypes = {
     candles: {
@@ -108,3 +112,33 @@ export const selectTheme = theme => ({
         primary50: '#e4e9f0',
     },
 })
+
+export const lineTypes = {
+    line: { text: 'Arrow', icon: props => <LineSVG {...props} /> },
+    arrow: {
+        text: 'Arrow',
+        icon: props => <LineArrowSVG {...props} />,
+    },
+    vertical: {
+        text: 'Vertical Line',
+        icon: props => <LineVerticalSVG {...props} />,
+    },
+    horizontal: {
+        text: 'Horizontal Line',
+        icon: props => <LineHorizontalSVG {...props} />,
+    },
+    horizontalRay: {
+        text: 'Horizontal Ray',
+        icon: props => <LineHorizontalRaySVG {...props} />,
+    },
+    parallelChannel: {
+        text: 'Parallel Channel',
+        icon: props => <LineParallelChannelSVG {...props} />,
+    },
+}
+
+export const smallIconStyle = {
+    height: 22,
+    width: 22,
+    className: 'align-middle',
+}

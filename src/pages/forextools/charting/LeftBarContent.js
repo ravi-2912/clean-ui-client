@@ -1,53 +1,65 @@
 /* eslint-disable no-unused-vars */
-import React from 'react'
+import React, { useState } from 'react'
 import classNames from 'classnames'
-import { Row, Col, Button } from 'react-bootstrap'
+import { Row, Col, Button, ButtonGroup, ToggleButton, Dropdown } from 'react-bootstrap'
 import { ReactComponent as PencilSVG } from './svgs/pencil.svg'
 import { ReactComponent as RightCaratSVG } from './svgs/right-carat.svg'
 import style from './style.module.scss'
+import { lineTypes, smallIconStyle } from './dataUI'
+import Keys from './utils'
 
 const LeftBarContent = props => {
-    return (
-        <div style={{ height: '100%' }}>
-            <Row style={{ marginLeft: -14 }}>
-                <Col style={{ height: 37 }}>
-                    <Button
-                        className="rounded-0 border-0 h-100 d-inline-block"
-                        style={{
-                            width: 38,
-                            paddingTop: 4,
-                            paddingBottom: 5,
-                            paddingLeft: 5,
-                            paddingRight: 5,
-                        }}
-                        variant="outline-light"
-                    >
-                        <PencilSVG />
-                    </Button>
-                    <Button
+    const [lineType, setLineType] = useState('line')
+
+    const dropDownMenu = (items, type) => (
+        <Row style={{ marginLeft: -14 }}>
+            <Col style={{ height: 37 }}>
+                <ButtonGroup toggle style={{ height: 37 }}>
+                    <ToggleButton
+                        type="checkbox"
                         className={classNames(
-                            'h-100 rounded-0 border-0 d-inline-block',
-                            style.svgFill,
+                            'rounded-0 border-0 h-100 d-inline-block',
+                            style.leftbarBtn,
                         )}
                         variant="outline-light"
-                        style={{
-                            width: 'calc(100% - 38px)',
-                            fontSize: 8,
-                            color: 'grey',
-                            padding: '10.5px 0',
-                        }}
+                    >
+                        {type === 'lineTypes' && lineTypes[lineType].icon()}
+                    </ToggleButton>
+                </ButtonGroup>
+                <Dropdown drop="right" className="d-inline">
+                    <Dropdown.Toggle
+                        drop="right"
+                        variant="outline-light"
+                        className={classNames(
+                            style.leftbarDropdownBtn,
+                            style.svgFill,
+                            style.noCarat,
+                            'rounded-0 border-0',
+                        )}
                     >
                         <RightCaratSVG width={5} />
-                    </Button>
-                </Col>
-            </Row>
-            <Row>
-                <Col>
-                    <Button>
-                        <PencilSVG />
-                    </Button>
-                </Col>
-            </Row>
+                    </Dropdown.Toggle>
+                    <Dropdown.Menu className={classNames(style.leftbarDropDownMenu)}>
+                        {Keys(items).map(item => (
+                            <Dropdown.Item
+                                className={classNames(style.leftbarDropDownMenuItem)}
+                                eventKey={item}
+                            >
+                                {items[item].icon(smallIconStyle)}{' '}
+                                <div className="d-inline h100 align-middle ml-3">
+                                    {items[item].text}
+                                </div>
+                            </Dropdown.Item>
+                        ))}
+                    </Dropdown.Menu>
+                </Dropdown>
+            </Col>
+        </Row>
+    )
+
+    return (
+        <div style={{ height: '100%', overflow: 'visible' }}>
+            {dropDownMenu(lineTypes, 'lineTypes')}
         </div>
     )
 }

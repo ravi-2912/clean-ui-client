@@ -219,12 +219,12 @@ const Charting = () => {
                                 <ReflexContainer orientation="vertical" windowResizeAware>
                                     {window.innerWidth > breakpoint && (
                                         <ReflexElement
-                                            minSize={50}
-                                            maxSize={50}
-                                            size={50}
+                                            minSize={47}
+                                            maxSize={47}
+                                            size={47}
                                             style={{
-                                                overflow: 'hidden',
-                                                borderRight: '2px solid red',
+                                                overflow: 'visible',
+                                                borderRight: '2px solid #c8c4db',
                                             }}
                                         >
                                             <LeftBarContent />
