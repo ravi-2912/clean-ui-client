@@ -23,7 +23,14 @@ import { ReactComponent as RightCaratSVG } from './svgs/right-carat.svg'
 
 // import './select.scss'
 import style from './style.module.scss'
-import { granularities, chartTypes, pointerTypes, selectStyles, selectTheme } from './dataUI'
+import {
+    granularities,
+    chartTypes,
+    pointerTypes,
+    selectStyles,
+    selectTheme,
+    smallIconStyle,
+} from './dataUI'
 import Keys from './utils'
 
 const TobBarContent = props => {
@@ -41,12 +48,6 @@ const TobBarContent = props => {
         { value: 'strawberry', label: 'Strawberry' },
         { value: 'vanilla', label: 'Vanilla' },
     ]
-
-    const smallIconStyle = {
-        height: 22,
-        width: 22,
-        className: 'align-middle',
-    }
 
     const dropdownMenu = (items, type = 'tf', collapsed = false) => (
         <Dropdown
