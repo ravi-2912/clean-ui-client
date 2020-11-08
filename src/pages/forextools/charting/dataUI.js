@@ -64,27 +64,27 @@ export const pointerTypes = {
     measure: { text: 'Measure', icon: props => <MeasureSVG {...props} /> },
 }
 
-export const selectStyles = {
+export const selectStyles = (height = 37, border = false) => ({
     container: (provided, state) => ({
         ...provided,
-        height: 37,
+        height,
         // border: 'none',
     }),
     control: (provided, state) => ({
         ...provided,
-        maxHeight: 37,
-        minHeight: 37,
-        border: 'none',
+        maxHeight: height,
+        minHeight: height,
+        border: !border && 'none',
     }),
     valueContainer: (provided, state) => ({
         ...provided,
-        maxHeight: 35,
-        minHeight: 35,
+        maxHeight: height - 2,
+        minHeight: height - 2,
     }),
     indicatorsContainer: (provided, state) => ({
         ...provided,
-        maxHeight: 35,
-        minHeight: 35,
+        maxHeight: height - 2,
+        minHeight: height - 2,
     }),
     singleValue: (provided, state) => ({
         ...provided,
@@ -94,7 +94,8 @@ export const selectStyles = {
         ...provided,
         color: '#595c97',
     }),
-}
+})
+
 export const selectTheme = theme => ({
     ...theme,
     borderRadius: 0,
