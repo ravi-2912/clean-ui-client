@@ -38,6 +38,28 @@
     // }
 }
 
+.topbarTradeBtn {
+    height: 37px;
+    border-radius: 0;
+    margin: 0;
+    color: $gray-6 !important;
+
+    &.topbarLongBtn {
+        &:hover {
+            color: white !important;
+            background: darken($color: #28a745, $amount: 5);
+            border: 1px solid darken($color: #28a745, $amount: 10) !important;
+        }
+    }
+    &.topbarShortBtn {
+        &:hover {
+            color: white !important;
+            background: darken($color: #f5222e, $amount: 15);
+            border: 1px solid darken($color: #f5222e, $amount: 30) !important;
+        }
+    }
+}
+
 .topbarDropDownMenu {
     color: $gray-6 !important;
 }
