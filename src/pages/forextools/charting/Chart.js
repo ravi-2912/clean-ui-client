@@ -8,7 +8,7 @@ import PropTypes from 'prop-types'
 
 import { format } from 'd3-format'
 import { timeFormat } from 'd3-time-format'
-import { scaleTime, scaleLinear } from 'd3-scale'
+import { scaleTime, scaleLinear, scaleUtc } from 'd3-scale'
 
 import { ChartCanvas, Chart, ZoomButtons } from 'react-stockcharts'
 import { BarSeries, CandlestickSeries } from 'react-stockcharts/lib/series'
@@ -115,7 +115,7 @@ class CandleStickChartWithZoomPan extends React.Component {
                 type={type}
                 seriesName={`MSFT_${this.state.suffix}`}
                 data={data}
-                xScale={xScale}
+                xScale={scaleUtc()}
                 xExtents={xExtents}
                 xAccessor={xAccessor}
                 displayXAccessor={displayXAccessor}

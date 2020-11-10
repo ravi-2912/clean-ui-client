@@ -1731,6 +1731,109 @@
   resolved "https://registry.yarnpkg.com/@protobufjs/utf8/-/utf8-1.1.0.tgz#a777360b5b39a1a2e5106f8e858f2fd2d060c570"
   integrity sha1-p3c2C1s5oaLlEG+OhY8v0tBgxXA=
 
+"@react-financial-charts/annotations@^1.0.0-alpha.16":
+  version "1.0.0-alpha.16"
+  resolved "https://registry.yarnpkg.com/@react-financial-charts/annotations/-/annotations-1.0.0-alpha.16.tgz#3c613e875c406584141ced73c02bed034d5772d4"
+  integrity sha512-3PBO6LRUzYCWSQUM01f5BRoPfmr3CRfNDbqsf3RxKIyTPmhIfBZAPtFXohuEhceAamJNQbDHj7yD+TyhcOfmIg==
+  dependencies:
+    "@react-financial-charts/core" "^1.0.0-alpha.16"
+    "@types/d3-scale" "^2.2.0"
+    prop-types "^15.7.2"
+
+"@react-financial-charts/axes@^1.0.0-alpha.16":
+  version "1.0.0-alpha.16"
+  resolved "https://registry.yarnpkg.com/@react-financial-charts/axes/-/axes-1.0.0-alpha.16.tgz#30612fd24b48f9990ff51286cfb2ad15e5635b29"
+  integrity sha512-29Wa7H14IhgGvhc5c5k4JgGkjtUknR6yd6Zdr92Gfa5jE4uceYc2U5df2dTZw2AVhwqTy0ayuMzwCcWORWqxvA==
+  dependencies:
+    "@react-financial-charts/core" "^1.0.0-alpha.16"
+    "@types/d3-scale" "^2.2.0"
+    d3-array "^2.7.1"
+    d3-force "^2.1.1"
+    d3-scale "^2.2.2"
+    d3-selection "^1.4.2"
+
+"@react-financial-charts/coordinates@^1.0.0-alpha.16":
+  version "1.0.0-alpha.16"
+  resolved "https://registry.yarnpkg.com/@react-financial-charts/coordinates/-/coordinates-1.0.0-alpha.16.tgz#4f72d67b0fac32ad4be533232b926a89c86bb74f"
+  integrity sha512-sAZ4ZOhSFDz6A+oxKkNEG5mE4fs3oqhhcm5wBJ1W/W3PR68+26F0C/r+O9RM37eFh3cRnikkz42/ZYYyGBc1Sw==
+  dependencies:
+    "@react-financial-charts/core" "^1.0.0-alpha.16"
+    d3-format "^1.4.5"
+    prop-types "^15.7.2"
+
+"@react-financial-charts/core@^1.0.0-alpha.16":
+  version "1.0.0-alpha.16"
+  resolved "https://registry.yarnpkg.com/@react-financial-charts/core/-/core-1.0.0-alpha.16.tgz#0cffe7d6597b9749188181be65903dd357e84ab6"
+  integrity sha512-hZNUQVsUGVdURpqcDmyXlFgEQj29zcvUDS8/X3KAim963RcSgpvWvW40P0ZE7RLJZej9Qo9q1xSNI4VxIxOnHQ==
+  dependencies:
+    "@types/d3-scale" "^2.2.0"
+    d3-array "^2.7.1"
+    d3-scale "^2.2.2"
+    d3-selection "^1.4.2"
+    lodash.flattendeep "^4.4.0"
+    prop-types "^15.7.2"
+
+"@react-financial-charts/indicators@^1.0.0-alpha.16":
+  version "1.0.0-alpha.16"
+  resolved "https://registry.yarnpkg.com/@react-financial-charts/indicators/-/indicators-1.0.0-alpha.16.tgz#18e4b4d1b391c3086c451b22337034c664b9c679"
+  integrity sha512-fNkq7OI6g94L9q6qzVgxzLitwxIT5W068uarsanffkKj5bTttxMfFrPNS6wHuQn4LLSovKlCzRg5TlmUGn8tvA==
+  dependencies:
+    d3-array "^2.7.1"
+    d3-scale "^2.2.2"
+
+"@react-financial-charts/interactive@^1.0.0-alpha.16":
+  version "1.0.0-alpha.16"
+  resolved "https://registry.yarnpkg.com/@react-financial-charts/interactive/-/interactive-1.0.0-alpha.16.tgz#e0a46bfffd4331fcc3d20cc90ff5ad3aa8646a58"
+  integrity sha512-GCklb9qTQcfKiPmdpaoIWCBaZSmNE9X74r904padPa6sXG/BsM6oOXY7Xue+O+bc0MTNMTBXYwh3b7W+tszxGQ==
+  dependencies:
+    "@react-financial-charts/coordinates" "^1.0.0-alpha.16"
+    "@react-financial-charts/core" "^1.0.0-alpha.16"
+    d3-array "^2.7.1"
+    d3-format "^1.4.5"
+    d3-interpolate "^1.4.0"
+    d3-path "^1.0.9"
+    prop-types "^15.7.2"
+
+"@react-financial-charts/scales@^1.0.0-alpha.16":
+  version "1.0.0-alpha.16"
+  resolved "https://registry.yarnpkg.com/@react-financial-charts/scales/-/scales-1.0.0-alpha.16.tgz#d56d049573d18d2a05c66328c52236eebdc43adc"
+  integrity sha512-wFuagTiHJDo+37URLcg8Bi8hj+8YfybaqtpaQZYItB0Ty7AB5jTs9Pw/v2GD86k5T56ofjPJUgIR0MqOXoOufg==
+  dependencies:
+    "@react-financial-charts/core" "^1.0.0-alpha.16"
+    d3-array "^2.7.1"
+    d3-scale "^2.2.2"
+    d3-time-format "^2.3.0"
+
+"@react-financial-charts/series@^1.0.0-alpha.16":
+  version "1.0.0-alpha.16"
+  resolved "https://registry.yarnpkg.com/@react-financial-charts/series/-/series-1.0.0-alpha.16.tgz#4ff033437e5ce103c75f5a1216626dc350937830"
+  integrity sha512-lP6QEkus+63hPSeP5+aZVkc354wibx22746Gbs9XNJw1GNmruGy7iR+Pin43PUdbq4KeqR2HG8hOW9FiveGj1A==
+  dependencies:
+    "@react-financial-charts/core" "^1.0.0-alpha.16"
+    "@types/d3-scale" "^2.2.0"
+    d3-array "^2.7.1"
+    d3-scale "^2.2.2"
+    d3-shape "^1.3.7"
+
+"@react-financial-charts/tooltip@^1.0.0-alpha.16":
+  version "1.0.0-alpha.16"
+  resolved "https://registry.yarnpkg.com/@react-financial-charts/tooltip/-/tooltip-1.0.0-alpha.16.tgz#74460e78826dd0c12e2c1d296ea46e4f9460b67b"
+  integrity sha512-RjdVb4iqpDMtVWRBn+G8YoTJywDkZDVO7AwuwuKLG1d/Oz8bd966z2dn0tBnfhbaIBwY/TAaW2r1Gbw6Ubj2Qw==
+  dependencies:
+    "@react-financial-charts/core" "^1.0.0-alpha.16"
+    d3-array "^2.7.1"
+    d3-format "^1.4.5"
+    d3-time-format "^2.3.0"
+    prop-types "^15.7.2"
+
+"@react-financial-charts/utils@^1.0.0-alpha.10":
+  version "1.0.0-alpha.10"
+  resolved "https://registry.yarnpkg.com/@react-financial-charts/utils/-/utils-1.0.0-alpha.10.tgz#385d5af5ec298da9f0fa12d4252a725e15b69ffc"
+  integrity sha512-ncy0BnMOPenRshS8fs7a80Br0pFePbZkdfXngUQuU2Si4R4Wxlrir6pr08eqQZi11jhhxMHvssF04mcRv65t2Q==
+  dependencies:
+    "@types/react-virtualized-auto-sizer" "^1.0.0"
+    react-virtualized-auto-sizer "^1.0.2"
+
 "@redux-saga/core@^1.1.3":
   version "1.1.3"
   resolved "https://registry.yarnpkg.com/@redux-saga/core/-/core-1.1.3.tgz#3085097b57a4ea8db5528d58673f20ce0950f6a4"
@@ -1961,6 +2064,18 @@
   resolved "https://registry.yarnpkg.com/@types/color-name/-/color-name-1.1.1.tgz#1c1261bbeaa10a8055bbc5d8ab84b7b2afc846a0"
   integrity sha512-rr+OQyAjxze7GgWrSaJwydHStIhHq2lvY3BOC2Mj7KnzI7XK0Uw1TOOdI9lDoajEbSWLiYgoo4f1R51erQfhPQ==
 
+"@types/d3-scale@^2.2.0":
+  version "2.2.4"
+  resolved "https://registry.yarnpkg.com/@types/d3-scale/-/d3-scale-2.2.4.tgz#ca0d4b84d2f88fe058480f81354d14041a667b96"
+  integrity sha512-wkQXT+IfgfAnKB5rtS1qMJg3FS32r1rVFHvqtiqk8pX8o5aQR3VwX1P7ErHjzNIicTlkWsaMiUTrYB+E75HFeA==
+  dependencies:
+    "@types/d3-time" "^1"
+
+"@types/d3-time@^1":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@types/d3-time/-/d3-time-1.1.1.tgz#6cf3a4242c3bbac00440dfb8ba7884f16bedfcbf"
+  integrity sha512-ULX7LoqXTCYtM+tLYOaeAJK7IwCT+4Gxlm2MaH0ErKLi07R5lh8NHCAyWcDkCCmx1AfRcBEV6H9QE9R25uP7jw==
+
 "@types/eslint-visitor-keys@^1.0.0":
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@types/eslint-visitor-keys/-/eslint-visitor-keys-1.0.0.tgz#1ee30d79544ca84d68d4b3cdb0af4f205663dd2d"
@@ -2072,6 +2187,13 @@
   version "4.4.0"
   resolved "https://registry.yarnpkg.com/@types/react-transition-group/-/react-transition-group-4.4.0.tgz#882839db465df1320e4753e6e9f70ca7e9b4d46d"
   integrity sha512-/QfLHGpu+2fQOqQaXh8MG9q03bFENooTb/it4jr5kKaZlDQfWvjqWZg48AwzPVMBHlRuTRAY7hRHCEOXz5kV6w==
+  dependencies:
+    "@types/react" "*"
+
+"@types/react-virtualized-auto-sizer@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@types/react-virtualized-auto-sizer/-/react-virtualized-auto-sizer-1.0.0.tgz#fc32f30a8dab527b5816f3a757e1e1d040c8f272"
+  integrity sha512-NMErdIdSnm2j/7IqMteRiRvRulpjoELnXWUwdbucYCz84xG9PHcoOrr7QfXwB/ku7wd6egiKFrzt/+QK4Imeeg==
   dependencies:
     "@types/react" "*"
 
@@ -4494,7 +4616,7 @@ d3-array@^1.2.0, d3-array@^1.2.1:
   resolved "https://registry.yarnpkg.com/d3-array/-/d3-array-1.2.4.tgz#635ce4d5eea759f6f605863dbcfc30edc737f71f"
   integrity sha512-KHW6M86R+FUPYGb3R5XiYjXPq7VzwxZ22buHhAEVG5ztoEcZZMLov530mmccaqA1GghZArjQV46fuc8kUqhhHw==
 
-d3-array@^2.3.0, d3-array@^2.4.0:
+d3-array@^2.7.1:
   version "2.8.0"
   resolved "https://registry.yarnpkg.com/d3-array/-/d3-array-2.8.0.tgz#f76e10ad47f1f4f75f33db5fc322eb9ffde5ef23"
   integrity sha512-6V272gsOeg7+9pTW1jSYOR1QE37g95I3my1hBmY+vOUNHRrk9yt4OTz/gK7PMkVAVDrYYq4mq3grTiZ8iJdNIw==
@@ -4508,11 +4630,6 @@ d3-color@1:
   version "1.4.1"
   resolved "https://registry.yarnpkg.com/d3-color/-/d3-color-1.4.1.tgz#c52002bf8846ada4424d55d97982fef26eb3bc8a"
   integrity sha512-p2sTHSLCJI2QKunbGb7ocOh7DgTAn8IrLx21QRc/BSnodXM4sv6aLQlnfpvehFMLZEfBc6g9pH9SWQccFYfJ9Q==
-
-"d3-color@1 - 2":
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/d3-color/-/d3-color-2.0.0.tgz#8d625cab42ed9b8f601a1760a389f7ea9189d62e"
-  integrity sha512-SPXi0TSKPD4g9tw0NMZFnR95XVgUZiBH+uUTqQuDu1OsE2zomHU7ho0FISciaPvosimixwHFl3WHLGabv6dDgQ==
 
 d3-dispatch@1:
   version "1.0.6"
@@ -4543,7 +4660,7 @@ d3-force@^1.1.0:
     d3-quadtree "1"
     d3-timer "1"
 
-d3-force@^2.0.1:
+d3-force@^2.1.1:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/d3-force/-/d3-force-2.1.1.tgz#f20ccbf1e6c9e80add1926f09b51f686a8bc0937"
   integrity sha512-nAuHEzBqMvpFVMf9OX75d00OxvOXdxY+xECIXjW6Gv8BRrXu6gAWbv/9XKrvfJ5i5DCokDW7RYE50LRoK092ew==
@@ -4557,12 +4674,7 @@ d3-format@1, d3-format@^1.2.1, d3-format@^1.4.4:
   resolved "https://registry.yarnpkg.com/d3-format/-/d3-format-1.4.4.tgz#356925f28d0fd7c7983bfad593726fce46844030"
   integrity sha512-TWks25e7t8/cqctxCmxpUuzZN11QxIA7YrMbram94zMQ0PXjE4LVIMe/f6a4+xxL8HQ3OsAFULOINQi1pE62Aw==
 
-"d3-format@1 - 2":
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/d3-format/-/d3-format-2.0.0.tgz#a10bcc0f986c372b729ba447382413aabf5b0767"
-  integrity sha512-Ab3S6XuE/Q+flY96HXT0jOXcM4EAClYFnRGY5zsjRGNy6qCYrQsMffs7cV5Q9xejb35zxW5hf/guKw34kvIKsA==
-
-d3-format@^1.4.3:
+d3-format@^1.4.5:
   version "1.4.5"
   resolved "https://registry.yarnpkg.com/d3-format/-/d3-format-1.4.5.tgz#374f2ba1320e3717eb74a9356c67daee17a7edb4"
   integrity sha512-J0piedu6Z8iB6TbIGfZgDzfXxUFN3qQRMofy2oPdXzQibYGqPB/9iMcxr/TGalU+2RsyDO+U4f33id8tbnSRMQ==
@@ -4573,13 +4685,6 @@ d3-interpolate@1, d3-interpolate@^1.1.6, d3-interpolate@^1.4.0:
   integrity sha512-V9znK0zc3jOPV4VD2zZn0sDhZU3WAE2bmlxdIwwQPPzPjvyLkd8B3JUVdS1IDUFDkWZ72c9qnv1GK2ZagTZ8EA==
   dependencies:
     d3-color "1"
-
-"d3-interpolate@1.2.0 - 2":
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/d3-interpolate/-/d3-interpolate-2.0.1.tgz#98be499cfb8a3b94d4ff616900501a64abc91163"
-  integrity sha512-c5UhwwTs/yybcmTpAVqwSFl6vrQ8JZJoT5F7xNFK9pymv5C0Ymcc9/LIJHtYIggg/yS9YHw8i8O8tgb9pupjeQ==
-  dependencies:
-    d3-color "1 - 2"
 
 d3-path@1, d3-path@^1.0.5, d3-path@^1.0.9:
   version "1.0.9"
@@ -4609,23 +4714,24 @@ d3-scale@^1.0.7:
     d3-time "1"
     d3-time-format "2"
 
-d3-scale@^3.2.1:
-  version "3.2.3"
-  resolved "https://registry.yarnpkg.com/d3-scale/-/d3-scale-3.2.3.tgz#be380f57f1f61d4ff2e6cbb65a40593a51649cfd"
-  integrity sha512-8E37oWEmEzj57bHcnjPVOBS3n4jqakOeuv1EDdQSiSrYnMCBdMd3nc4HtKk7uia8DUHcY/CGuJ42xxgtEYrX0g==
+d3-scale@^2.2.2:
+  version "2.2.2"
+  resolved "https://registry.yarnpkg.com/d3-scale/-/d3-scale-2.2.2.tgz#4e880e0b2745acaaddd3ede26a9e908a9e17b81f"
+  integrity sha512-LbeEvGgIb8UMcAa0EATLNX0lelKWGYDQiPdHj+gLblGVhGLyNbaCn3EvrJf0A3Y/uOOU5aD6MTh5ZFCdEwGiCw==
   dependencies:
-    d3-array "^2.3.0"
-    d3-format "1 - 2"
-    d3-interpolate "1.2.0 - 2"
-    d3-time "1 - 2"
-    d3-time-format "2 - 3"
+    d3-array "^1.2.0"
+    d3-collection "1"
+    d3-format "1"
+    d3-interpolate "1"
+    d3-time "1"
+    d3-time-format "2"
 
 d3-selection@^1.2.0:
   version "1.4.1"
   resolved "https://registry.yarnpkg.com/d3-selection/-/d3-selection-1.4.1.tgz#98eedbbe085fbda5bafa2f9e3f3a2f4d7d622a98"
   integrity sha512-BTIbRjv/m5rcVTfBs4AMBLKs4x8XaaLkwm28KWu9S2vKNqXkXt2AH2Qf0sdPZHjFxcWg/YL53zcqAz+3g4/7PA==
 
-d3-selection@^1.4.1:
+d3-selection@^1.4.2:
   version "1.4.2"
   resolved "https://registry.yarnpkg.com/d3-selection/-/d3-selection-1.4.2.tgz#dcaa49522c0dbf32d6c1858afc26b6094555bc5c"
   integrity sha512-SJ0BqYihzOjDnnlfyeHT0e30k0K1+5sR3d5fNueCNeuhZTnGw4M4o8mqJchSwgKMXCNFo+e2VTChiSJ0vYtXkg==
@@ -4644,22 +4750,17 @@ d3-time-format@2, d3-time-format@^2.1.1, d3-time-format@^2.2.3:
   dependencies:
     d3-time "1"
 
-"d3-time-format@2 - 3":
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/d3-time-format/-/d3-time-format-3.0.0.tgz#df8056c83659e01f20ac5da5fdeae7c08d5f1bb6"
-  integrity sha512-UXJh6EKsHBTjopVqZBhFysQcoXSv/5yLONZvkQ5Kk3qbwiUYkdX17Xa1PT6U1ZWXGGfB1ey5L8dKMlFq2DO0Ag==
+d3-time-format@^2.3.0:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/d3-time-format/-/d3-time-format-2.3.0.tgz#107bdc028667788a8924ba040faf1fbccd5a7850"
+  integrity sha512-guv6b2H37s2Uq/GefleCDtbe0XZAuy7Wa49VGkPVPMfLL9qObgBST3lEHJBMUp8S7NdLQAGIvr2KXk8Hc98iKQ==
   dependencies:
-    d3-time "1 - 2"
+    d3-time "1"
 
-d3-time@1, d3-time@^1.0.8, d3-time@^1.1.0:
+d3-time@1, d3-time@^1.0.8:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/d3-time/-/d3-time-1.1.0.tgz#b1e19d307dae9c900b7e5b25ffc5dcc249a8a0f1"
   integrity sha512-Xh0isrZ5rPYYdqhAVk8VLnMEidhz5aP7htAADH6MfzgmmicPkTo8LhkLxci61/lCB7n7UmE3bN0leRt+qvkLxA==
-
-"d3-time@1 - 2":
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/d3-time/-/d3-time-2.0.0.tgz#ad7c127d17c67bd57a4c61f3eaecb81108b1e0ab"
-  integrity sha512-2mvhstTFcMvwStWd9Tj3e6CEqtOivtD8AUiHT8ido/xmzrI9ijrUUihZ6nHuf/vsScRBonagOdj0Vv+SEL5G3Q==
 
 d3-timer@1:
   version "1.0.10"
@@ -11559,25 +11660,21 @@ react-fast-compare@^2.0.4:
   resolved "https://registry.yarnpkg.com/react-fast-compare/-/react-fast-compare-2.0.4.tgz#e84b4d455b0fec113e0402c329352715196f81f9"
   integrity sha512-suNP+J1VU1MWFKcyt7RtjiSWUjvidmQSlqu+eHslq+342xCbGTYmC0mEhPCOHxlW0CywylOC1u2DFAT+bv4dBw==
 
-react-financial-charts@^0.5.1:
-  version "0.5.1"
-  resolved "https://registry.yarnpkg.com/react-financial-charts/-/react-financial-charts-0.5.1.tgz#44a3e8ed4ac7fb5b78f1c5e8c2c88d9946f59ef1"
-  integrity sha512-TovU29lw2n47KLPD4iIIZv/1RShtztJx+6aTVH+ZCc3g44Karsutr2d7CfLyNV5nuSEPtIdnZGyX/nAj7U77Xw==
+react-financial-charts@^1.0.0-alpha.16:
+  version "1.0.0-alpha.16"
+  resolved "https://registry.yarnpkg.com/react-financial-charts/-/react-financial-charts-1.0.0-alpha.16.tgz#d5bf214ef1e86910ed147a0114f0546b57bf0a3d"
+  integrity sha512-n75bol1Bkugt/SbWngEHObgyqWGlU53LDYDYnDsOpFuNF1sEEnXxpSrmUS3DA8bcTAyHxAFqwVz1HeG8ATTaAg==
   dependencies:
-    d3-array "^2.4.0"
-    d3-force "^2.0.1"
-    d3-format "^1.4.3"
-    d3-interpolate "^1.4.0"
-    d3-path "^1.0.9"
-    d3-scale "^3.2.1"
-    d3-selection "^1.4.1"
-    d3-shape "^1.3.7"
-    d3-time "^1.1.0"
-    d3-time-format "^2.2.3"
-    debug "^4.1.1"
-    lodash.flattendeep "^4.4.0"
-    prop-types "^15.7.2"
-    save-svg-as-png "^1.4.14"
+    "@react-financial-charts/annotations" "^1.0.0-alpha.16"
+    "@react-financial-charts/axes" "^1.0.0-alpha.16"
+    "@react-financial-charts/coordinates" "^1.0.0-alpha.16"
+    "@react-financial-charts/core" "^1.0.0-alpha.16"
+    "@react-financial-charts/indicators" "^1.0.0-alpha.16"
+    "@react-financial-charts/interactive" "^1.0.0-alpha.16"
+    "@react-financial-charts/scales" "^1.0.0-alpha.16"
+    "@react-financial-charts/series" "^1.0.0-alpha.16"
+    "@react-financial-charts/tooltip" "^1.0.0-alpha.16"
+    "@react-financial-charts/utils" "^1.0.0-alpha.10"
 
 react-helmet@^6.0.0:
   version "6.0.0"
@@ -11912,6 +12009,11 @@ react-transition-group@^4.3.0, react-transition-group@^4.4.1:
     dom-helpers "^5.0.1"
     loose-envify "^1.4.0"
     prop-types "^15.6.2"
+
+react-virtualized-auto-sizer@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/react-virtualized-auto-sizer/-/react-virtualized-auto-sizer-1.0.2.tgz#a61dd4f756458bbf63bd895a92379f9b70f803bd"
+  integrity sha512-MYXhTY1BZpdJFjUovvYHVBmkq79szK/k7V3MO+36gJkWGkrXKtyr4vCPtpphaTLRAdDNoYEYFZWE8LjN+PIHNg==
 
 react-virtualized@^9.19.1:
   version "9.21.2"
@@ -12589,7 +12691,7 @@ sass-loader@8.0.2:
     schema-utils "^2.6.1"
     semver "^6.3.0"
 
-save-svg-as-png@^1.4.14, save-svg-as-png@^1.4.5:
+save-svg-as-png@^1.4.5:
   version "1.4.17"
   resolved "https://registry.yarnpkg.com/save-svg-as-png/-/save-svg-as-png-1.4.17.tgz#294442002772a24f1db1bf8a2aaf7df4ab0cdc55"
   integrity sha512-7QDaqJsVhdFPwviCxkgHiGm9omeaMBe1VKbHySWU6oFB2LtnGCcYS13eVoslUgq6VZC6Tjq/HddBd1K6p2PGpA==
