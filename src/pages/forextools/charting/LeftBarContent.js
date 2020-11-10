@@ -44,6 +44,7 @@ const LeftBarContent = props => {
                             <Dropdown.Item
                                 className={classNames(style.leftbarDropDownMenuItem)}
                                 eventKey={item}
+                                key={item}
                             >
                                 {items[item].icon(smallIconStyle)}{' '}
                                 <div className="d-inline h100 align-middle ml-3">

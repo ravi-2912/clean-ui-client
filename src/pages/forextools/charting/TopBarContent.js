@@ -41,7 +41,7 @@ const TobBarContent = props => {
     const [leftPaneContent, setLeftPaneContent] = useState('')
     const [timeframe, setTimeframe] = useState('H1')
     const [chartType, setChartType] = useState('candles')
-    const [pointerType, setPointerType] = useState('arrow')
+    const { pointerType } = props
 
     const options = [
         { value: 'chocolate', label: 'Chocolate' },

@@ -6,6 +6,8 @@ import { Tab, TabList, TabPanel } from 'react-tabs'
 import 'react-tabs/style/react-tabs.css'
 import { Container, Row, Col, Button, ToggleButton } from 'react-bootstrap'
 import classNames from 'classnames'
+import getData from './chartData'
+import SizeAwareElement from './SizeAwareElement'
 import ControlledElement from './ControlledElement'
 import 'react-reflex/styles.css'
 import TopBarContent from './TopBarContent'
@@ -24,6 +26,8 @@ const Charting = () => {
 
     const [visibleRightDrawer, setVisibleRightDrawer] = useState(false)
     const [visibleLeftDrawer, setVisibleLeftDrawer] = useState(false)
+    const [chartData, setChartData] = useState(null)
+    const [chartCursor, setChartCursor] = useState('arrow')
 
     const [bottomPaneState, setBottomPaneState] = useState({
         id: 'bottom-pane',
@@ -119,6 +123,14 @@ const Charting = () => {
         stepFn()
     }
 
+    useEffect(() => {
+        getData().then(data => {
+            setChartData(data)
+        })
+    }, [])
+
+    const animateSpeed = 60
+
     const onPaneOpenClicked = (paneState, paneSetState, activeTabKey = 0) => {
         const { minSize } = paneState
         const maxSize = paneState.maxSize
@@ -141,7 +153,7 @@ const Charting = () => {
             return from > to
         }
 
-        animate(paneState.size, maxSize, 40, done, update)
+        animate(paneState.size, maxSize, animateSpeed, done, update)
     }
 
     const onPaneMinimizeClicked = (paneState, paneSetState, activeTabKey = '') => {
@@ -163,7 +175,7 @@ const Charting = () => {
             return from < to
         }
 
-        animate(paneState.size, minSize, -40, done, update)
+        animate(paneState.size, minSize, -animateSpeed, done, update)
     }
 
     const onPaneMaximizeClicked = (paneState, paneSetState, activeTabKey = 0) => {
@@ -186,7 +198,7 @@ const Charting = () => {
             return from > to
         }
 
-        animate(paneState.size, maxSize, 40, done, update)
+        animate(paneState.size, maxSize, animateSpeed, done, update)
     }
 
     return (
@@ -210,6 +222,7 @@ const Charting = () => {
                     }
                     leftPaneClose={() => onPaneMinimizeClicked(leftPaneState, setLeftPaneState)}
                     leftPaneCollapsed={leftPaneState.collapsed}
+                    pointerType={chartCursor}
                 />
 
                 <Row style={{ marginLeft: -16 }}>
@@ -241,25 +254,27 @@ const Charting = () => {
                                         <ReflexSplitter
                                             propagate
                                             className={style.splitterVertical}
-                                            onResize={() =>
+                                            onResize={() => {
                                                 setLeftPaneState({
                                                     ...leftPaneState,
                                                     collapsed: false,
                                                 })
-                                            }
+                                            }}
                                         />
                                     )}
-                                    <ReflexElement />
+                                    <ReflexElement propagateDimensions propagateDimensionsRate={5}>
+                                        <SizeAwareElement data={chartData} cursor={chartCursor} />
+                                    </ReflexElement>
                                     {window.innerWidth > breakpoint && !rightPaneState.collapsed && (
                                         <ReflexSplitter
                                             propagate
                                             className={style.splitterVertical}
-                                            onResize={() =>
+                                            onResize={() => {
                                                 setRightPaneState({
                                                     ...rightPaneState,
                                                     collapsed: false,
                                                 })
-                                            }
+                                            }}
                                         />
                                     )}
                                     {window.innerWidth > breakpoint &&
@@ -278,8 +293,6 @@ const Charting = () => {
                                     style.splitterHorizontal
                                 } ${bottomPaneState.collapsed && 'd-none'}`}
                                 onStartResize={({ domElement }) => {
-                                    console.log(bottomPaneState.size, domElement.offsetTop)
-
                                     setBottomPaneState({
                                         ...bottomPaneState,
                                         offsetTop: domElement.offsetTop,
@@ -288,12 +301,6 @@ const Charting = () => {
                                 onStopResize={({ domElement, component }) => {
                                     const { offsetTop, size } = bottomPaneState
                                     const newOffsetTop = domElement.offsetTop
-                                    console.log(
-                                        size,
-                                        offsetTop,
-                                        newOffsetTop,
-                                        size - newOffsetTop + offsetTop,
-                                    )
                                     if (!bottomPaneState.collapsed)
                                         setBottomPaneState({
                                             ...bottomPaneState,
